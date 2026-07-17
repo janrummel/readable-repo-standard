@@ -1,0 +1,19 @@
+# START HERE — for the model picking up tidymark
+
+> You are a fresh model with no memory of this project. Everything you need is in
+> this folder. Read this file, then STATE.md.
+
+## What this is
+`tidymark` is a tiny, dependency-free CLI that tidies Markdown files (trailing
+whitespace + list bullets). See README.md for usage.
+
+## Map of the repo
+- `STATE.md` — the working state. READ THIS NEXT. Done / next / parked / decisions.
+- `GLOSSARY.md` — project-specific terms.
+- `MANIFEST.md` — how to run it, what it needs.
+- `normalize.py` — the core functions.
+- `tidymark.py` — the CLI wrapper.
+- `tests/` — the test suite.
+
+## How to continue
+Open `STATE.md`, take the ONE next action named there, do it, update `STATE.md`.
