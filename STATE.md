@@ -4,8 +4,9 @@
 > Status lives ONLY here; other files do not declare their own completeness.
 
 ## The ONE next action
-Decide on publication: `git init` this repo and push it to a public GitHub remote, then
-wire the README's "try it yourself" links to the public URL. (Owner decision pending.)
+Push to GitHub: `gh repo create janrummel/readable-repo-standard --public --source=. --push`.
+Once live, the repo URL in the LinkedIn post (github.com/janrummel/readable-repo-standard)
+resolves. (Owner runs the push.)
 
 ## Next
 - A true cross-harness litmus run: a different model family / different CLI on
@@ -24,6 +25,9 @@ wire the README's "try it yourself" links to the public URL. (Owner decision pen
   v1: with-code-comment case (confidence 78 -> 98). v2: sharpened case (bare 0/3, RRS 3/3).
 - `templates/` — the five copy-paste files.
 - This repo made RRS-conformant (its own START_HERE / STATE / MANIFEST / GLOSSARY / AGENTS).
+- `git init` + first commit done (snapshot 1). Companion v0.3 note added (`companion/`).
+- Confidence figures corrected to self-reported median (Arm A = 82, raw 88/82/82) across
+  README, experiment/README, RESULTS-v2, and the shareable visualization, after a Quality-Gate.
 
 ## Parked (do NOT pick this up as "next")
 - None currently.
