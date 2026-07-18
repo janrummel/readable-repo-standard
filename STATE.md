@@ -4,9 +4,10 @@
 > Status lives ONLY here; other files do not declare their own completeness.
 
 ## The ONE next action
-Push to GitHub: `gh repo create janrummel/readable-repo-standard --public --source=. --push`.
-Once live, the repo URL in the LinkedIn post (github.com/janrummel/readable-repo-standard)
-resolves. (Owner runs the push.)
+Run a true cross-harness litmus test: a different model family / different CLI (e.g. a
+non-Claude agent) on `example/tidymark`, read-only, using the prompt in
+`experiment/v2/PREREGISTRATION-v2.md`. It is the strongest open evidence for the
+model-agnosticism claim, and the honest limit called out everywhere else.
 
 ## Next
 - A true cross-harness litmus run: a different model family / different CLI on
@@ -31,6 +32,14 @@ resolves. (Owner runs the push.)
 - GitHub Pages landing page added at `docs/index.html` (harness-minimum hero + the A/B scoreboard).
 - README intro reframed to the harness-minimum thesis (repo carries the harness minimum;
   the four files are the concrete first step). Standard text (STANDARD.md) kept precise.
+- Published: public repo at github.com/janrummel/readable-repo-standard, GitHub Pages live
+  at janrummel.github.io/readable-repo-standard (served from `main` /docs).
+- Presence pass (github-presence / website-review, target Framework Gold): README voice
+  neutralized (public repos use a neutral voice; the LinkedIn post stays first-person on
+  purpose), added `LICENSE` (MIT), a Quick Start with `git clone`, a "How this repo is
+  organized" + core-vs-companion section, OG/meta tags in `docs/`, and removed em-dashes.
+  FAQ / Contributing / landing-design criteria deliberately deferred (premature; landing
+  design is intentionally untouched).
 
 ## Parked (do NOT pick this up as "next")
 - None currently.
