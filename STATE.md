@@ -40,6 +40,20 @@ model-agnosticism claim, and the honest limit called out everywhere else.
   organized" + core-vs-companion section, OG/meta tags in `docs/`, and removed em-dashes.
   FAQ / Contributing / landing-design criteria deliberately deferred (premature; landing
   design is intentionally untouched).
+- Expert-role audit (4 lenses: maintainer, technical writer, skeptical adopter, launch
+  strategist) run against the live state; Tier-1 remediation applied:
+  - Discoverability: repo homepage set to the Pages URL, 10 topics added, README nav line
+    linking Landing/Standard/Templates/Experiment, landing page now links back to the repo.
+  - Link previews: 1200x630 `docs/og-image.png` + og:image / twitter summary_large_image.
+  - Self-consistency (the standard was violating its own rules): §3 STATE sections clarified
+    (canonical menu + which are required), START_HERE mandatory sections (confidentiality +
+    reach) added to this repo's and tidymark's START_HERE, tidymark MANIFEST gained the §8
+    code-repo block, four-vs-five file count reconciled + `.template` rename note, and the
+    orphan 45/65 figures in STANDARD replaced with the experiment's own numbers.
+  - Launch: LinkedIn post reworked (hook front-loaded, link moved to the first comment, CTA
+    tightened). Deferred to Tier 2/3: version tag + CHANGELOG, interop with existing
+    AGENTS.md/CLAUDE.md, committing raw transcripts, and the Arm-C (unstructured NOTES.md)
+    control that would close the "true by construction" critique.
 
 ## Parked (do NOT pick this up as "next")
 - None currently.

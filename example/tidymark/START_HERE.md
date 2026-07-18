@@ -15,6 +15,12 @@ bullets, heading levels). See README.md for usage.
 - `tidymark.py` — the CLI wrapper.
 - `tests/` — the test suite.
 
+## Confidentiality
+Public and synthetic. No confidential content. Safe to share.
+
+## Reach of continuability
+Fully continuable from here. Single house: everything needed is in this folder.
+
 ## How to continue
 Open `STATE.md`, take the ONE next action named there, do it, update `STATE.md`.
 Note: some code may look finished but be deliberately parked. STATE.md is the

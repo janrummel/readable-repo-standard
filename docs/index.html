@@ -9,7 +9,11 @@
 <meta property="og:title" content="Readable Repo Standard">
 <meta property="og:description" content="Put the agent-harness minimum inside the repo, so any blank AI model can open the folder and continue cold. Bare repo 0/3, readable repo 3/3.">
 <meta property="og:url" content="https://janrummel.github.io/readable-repo-standard/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://janrummel.github.io/readable-repo-standard/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://janrummel.github.io/readable-repo-standard/og-image.png">
 <style>
   :root {
     --paper: #edece4;
@@ -166,6 +170,8 @@
 
   footer { padding: 40px 0 64px; color: var(--ink-faint); font-family: var(--mono); font-size: .78rem; }
 
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+  a:hover { text-decoration-thickness: 2px; }
   @media (max-width: 560px) { .board { grid-template-columns: 1fr; } }
   @media (prefers-reduced-motion: reduce) {
     .meter i { transition: none; }
@@ -306,10 +312,14 @@
     <div class="prompt"><span class="c"># paste into a blank agent, pointed at a repo</span><br>
       Pick this project up cold, with no prior memory of it.<br>
       What is the single correct next action, and what must I respect?</div>
+    <p style="margin-top:24px;font-size:1rem;color:var(--ink-soft)">Get the four files, the
+      templates, the worked example, and the full standard:
+      <a href="https://github.com/janrummel/readable-repo-standard">github.com/janrummel/readable-repo-standard</a></p>
   </section>
 
   <footer class="wrap">
-    Readable Repo Standard · open &amp; synthetic · the numbers, raw runs and honesty log live in the repo.
+    Readable Repo Standard · open &amp; synthetic · the numbers, raw runs and honesty log live in
+    <a href="https://github.com/janrummel/readable-repo-standard">the repo</a>.
   </footer>
 </div>
 
