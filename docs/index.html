@@ -3,7 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Readable Repo Standard — the cold-start test</title>
+<title>Readable Repo Standard: the cold-start test</title>
+<meta name="description" content="Put the agent-harness minimum inside the repo, so any blank AI model can open the folder and continue cold. A pre-registered A/B test: bare repo 0/3, readable repo 3/3.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Readable Repo Standard">
+<meta property="og:description" content="Put the agent-harness minimum inside the repo, so any blank AI model can open the folder and continue cold. Bare repo 0/3, readable repo 3/3.">
+<meta property="og:url" content="https://janrummel.github.io/readable-repo-standard/">
+<meta name="twitter:card" content="summary">
 <style>
   :root {
     --paper: #edece4;
@@ -177,9 +183,9 @@
     <div class="eyebrow">Readable Repo Standard · cold-start test</div>
     <h1 style="margin-top:14px">Put the agent harness<br>in the <span class="pen">repo</span>.</h1>
     <p class="lede">Every agent harness is built differently. So instead of wrapping the model in a
-      harness, we put the harness minimum, the brain, the memory, the vocabulary, into the repo
-      itself. Then any blank model opens the folder and just knows what to do next. And we measured
-      whether it holds up.</p>
+      harness, the harness minimum, the brain, the memory, the vocabulary, lives in the repo
+      itself. Then any blank model opens the folder and just knows what to do next. And a
+      pre-registered test measured whether it holds up.</p>
     <div class="byline">the repo is the book · the model is only the pen · a pre-registered A/B experiment</div>
   </header>
 
@@ -196,7 +202,7 @@
     <h2>One project, two repos, identical code</h2>
     <p class="sub">A tiny synthetic tool. The only difference between the two copies: one has four small
       files that record the state (<span class="mono">START_HERE · STATE · MANIFEST · GLOSSARY</span>).
-      We dropped blank agents into each, cold, and asked for the single correct next action. The project
+      Blank agents were dropped into each, cold, and asked for the single correct next action. The project
       had a trap: a feature that <em>looked</em> finishable but was deliberately parked, while the real
       next task was a subtle bug whose priority lived only in <span class="mono">STATE.md</span>.</p>
 
@@ -255,7 +261,7 @@
 
   <section>
     <div class="eyebrow">Why it happened</div>
-    <h2>The bare agent is not less capable. It is uninformed — and confidently so.</h2>
+    <h2>The bare agent is not less capable. It is uninformed, and confidently so.</h2>
     <p class="sub">One bare agent even <em>spotted</em> the real bug in the code, and dismissed it anyway,
       because nothing in the repo told it that was the priority.</p>
     <blockquote class="pull">Seeing the bug was not enough.<br>Knowing it was next required the recorded state.</blockquote>
@@ -284,7 +290,7 @@
       <span class="chip">predictions written before running</span>
       <span class="chip">a leak caught &amp; re-run in isolation</span>
       <span class="chip">good code comments shrink the gap</span>
-      <span class="chip">same model family — cross-harness run still open</span>
+      <span class="chip">same model family, cross-harness run still open</span>
       <span class="chip">RRS complements code hygiene, not replaces it</span>
     </div>
   </section>
