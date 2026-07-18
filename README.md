@@ -1,5 +1,7 @@
 # Readable Repo Standard (RRS)
 
+[**Landing page**](https://janrummel.github.io/readable-repo-standard/) · [The standard](STANDARD.md) · [Templates](templates/) · [The experiment](experiment/)
+
 **Put the agent-harness minimum inside the repo, so any blank AI model can open the folder, understand it, and start working.**
 
 Every agent harness is built differently: its own memory, its own skills, its own
@@ -37,7 +39,8 @@ No framework, no runtime, no tool lock-in. Just files and conventions. Full spec
 git clone https://github.com/janrummel/readable-repo-standard
 ```
 
-1. Copy the five files from [`templates/`](templates/) into the root of your repo.
+1. Copy the five files (the four core files plus the `AGENTS.md` bridge) from
+   [`templates/`](templates/) into the root of your repo, dropping the `.template` suffix.
 2. Fill in `STATE.md` (the one next action, decisions with why) and `START_HERE.md` (what
    this is, a map). Define project terms in `GLOSSARY.md`.
 3. Open a fresh AI agent, point it at the repo, and ask for the next action. If it can

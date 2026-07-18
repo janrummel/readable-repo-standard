@@ -23,6 +23,10 @@ read the folder, understand it, and continue from the last state without guessin
 Everything in this repo is public and synthetic. No confidential content, no real
 names, no internal data. Safe to share.
 
+## Reach of continuability
+Fully continuable from here. Single house: everything needed to understand and extend
+the standard is in this folder.
+
 ## How to continue
 Open `STATE.md`, take the ONE next action named there, do it, update `STATE.md`, and
 freeze a snapshot that would pass its own litmus test.

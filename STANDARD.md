@@ -7,11 +7,10 @@
 > Guiding image: **the repo is the book; the model is only the pen.** The knowledge
 > lives in the folder, not in the model and not in the chat. The pen is replaceable.
 
-Status: v0.2. Derived from a real cold-start litmus test and validated by a
-pre-registered A/B experiment (see `experiment/`). A blank model docked at ~45%
-confidence on an unstructured repo; after applying RRS it rose to ~65% and higher,
-and on the sharpened test a bare repo scored 0/3 on the correct next action while an
-RRS repo scored 3/3.
+Status: v0.2. Validated by a pre-registered A/B experiment (see `experiment/`). On the
+sharpened test, a bare repo scored 0/3 on the correct next action while an RRS repo
+scored 3/3, with self-reported agent confidence of 82 vs 98 (medians, n=3 per arm). See
+`experiment/` for the full protocol, raw runs, and honest limits.
 
 ---
 
@@ -88,10 +87,16 @@ Doc conventions that make a repo self-explaining:
 
 ## 3. STATE.md structure
 
-Fixed sections, so a second model expects them blindly:
+Canonical sections, drawn from this fixed menu and kept in this order, so a second model
+knows where to look:
 
-`The ONE next action` / `Next` / `Done` / `Open` / `Parked (with why)` /
-`Decisions (with why)` / `Context`.
+`The ONE next action` / `Next` / `Done` / `Parked (with why)` / `Decisions (with why)` /
+`Open` / `Context`.
+
+Only `The ONE next action` and `Done` are required; include the others when they apply
+(a repo with nothing parked omits `Parked`). A repo may add a domain section such as
+`Constraints` after `Decisions`. The rule is fixed names in a fixed order, not that every
+section is always present.
 
 Always record decisions as (decision → why), so a successor does not accidentally
 overturn them. **The parked distinction matters most:** a feature that is deliberately
