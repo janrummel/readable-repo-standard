@@ -28,6 +28,9 @@ resolves. (Owner runs the push.)
 - `git init` + first commit done (snapshot 1). Companion v0.3 note added (`companion/`).
 - Confidence figures corrected to self-reported median (Arm A = 82, raw 88/82/82) across
   README, experiment/README, RESULTS-v2, and the shareable visualization, after a Quality-Gate.
+- GitHub Pages landing page added at `docs/index.html` (harness-minimum hero + the A/B scoreboard).
+- README intro reframed to the harness-minimum thesis (repo carries the harness minimum;
+  the four files are the concrete first step). Standard text (STANDARD.md) kept precise.
 
 ## Parked (do NOT pick this up as "next")
 - None currently.

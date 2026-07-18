@@ -1,14 +1,19 @@
 # Readable Repo Standard (RRS)
 
-**Build your project repo so any AI agent can pick it up cold and continue from where you left off, without you re-explaining anything.**
+**Put the agent-harness minimum inside the repo, so any blank AI model can open the folder, understand it, and start working.**
 
-An AI agent has no memory between sessions. A five-minute gap and a three-month gap
-look identical to it: it starts from zero every time. And after a long pause, *you*
-have forgotten the state too. RRS moves the memory out of your head and out of the
-chat, into the repo itself.
+Every agent harness is built differently: its own memory, its own skills, its own
+orchestration. RRS flips that around. Instead of wrapping the model in a harness, it puts
+the harness minimum, the orchestration, the memory, the vocabulary, the state a project
+needs, into the repo itself. Then there is no memory to lose between sessions: a
+five-minute gap and a three-month gap look the same to whoever picks the project up next,
+because the state lives in the folder, not in the chat.
 
 > The repo is the book. The model is only the pen. The knowledge lives in the folder,
 > so neither the model nor you has to remember it.
+
+The first concrete step is small: four files at the root plus a one-line `AGENTS.md`
+bridge. Start there.
 
 ## The idea in one screen
 
