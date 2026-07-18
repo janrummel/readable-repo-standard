@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Readable Repo Standard — the cold-start test</title>
+<style>
+  :root {
+    --paper: #edece4;
+    --card: #f5f3ec;
+    --ink: #1b201c;
+    --ink-soft: #545a52;
+    --ink-faint: #8b9088;
+    --line: #d5d2c7;
+    --accent: #216b57;
+    --accent-tint: #dde9e2;
+    --lost: #9a7a33;
+    --lost-tint: #e9e2cf;
+    --shadow: 0 1px 2px rgba(27,32,28,.06), 0 8px 30px rgba(27,32,28,.05);
+    --mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14171a; --card: #1a1e21; --ink: #e8e9e3; --ink-soft: #9aa19a;
+      --ink-faint: #6b726b; --line: #2a2f2c; --accent: #52b998; --accent-tint: #16332a;
+      --lost: #c39a47; --lost-tint: #2c2717; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 34px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14171a; --card: #1a1e21; --ink: #e8e9e3; --ink-soft: #9aa19a;
+    --ink-faint: #6b726b; --line: #2a2f2c; --accent: #52b998; --accent-tint: #16332a;
+    --lost: #c39a47; --lost-tint: #2c2717; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 34px rgba(0,0,0,.35);
+  }
+  :root[data-theme="light"] {
+    --paper: #edece4; --card: #f5f3ec; --ink: #1b201c; --ink-soft: #545a52;
+    --ink-faint: #8b9088; --line: #d5d2c7; --accent: #216b57; --accent-tint: #dde9e2;
+    --lost: #9a7a33; --lost-tint: #e9e2cf; --shadow: 0 1px 2px rgba(27,32,28,.06), 0 8px 30px rgba(27,32,28,.05);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--sans); line-height: 1.6;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  .mono { font-family: var(--mono); }
+  .eyebrow {
+    font-family: var(--mono); font-size: .72rem; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--accent); font-weight: 600;
+  }
+
+  /* ---- hero ---- */
+  header { padding: 76px 0 40px; border-bottom: 1px solid var(--line); }
+  .filmstrip { display: flex; gap: 5px; margin-bottom: 30px; }
+  .filmstrip i {
+    height: 26px; flex: 1; border: 1px solid var(--line); border-radius: 3px;
+    background: repeating-linear-gradient(90deg, transparent 0 3px, var(--line) 3px 4px);
+    opacity: .5;
+  }
+  .filmstrip i:nth-child(4) { border-color: var(--accent); opacity: 1;
+    background: repeating-linear-gradient(90deg, var(--accent-tint) 0 3px, var(--accent) 3px 4px); }
+  h1 {
+    font-family: var(--mono); font-weight: 600; letter-spacing: -.02em;
+    font-size: clamp(1.9rem, 5.2vw, 3rem); line-height: 1.1; margin: 0 0 22px;
+    text-wrap: balance;
+  }
+  h1 .pen { color: var(--accent); }
+  .lede { font-size: 1.18rem; color: var(--ink-soft); max-width: 60ch; margin: 0; }
+  .byline { margin-top: 26px; font-family: var(--mono); font-size: .8rem; color: var(--ink-faint); }
+
+  /* ---- sections ---- */
+  section { padding: 46px 0; border-bottom: 1px solid var(--line); }
+  h2 {
+    font-family: var(--mono); font-size: 1.32rem; font-weight: 600; letter-spacing: -.01em;
+    margin: 0 0 8px; text-wrap: balance;
+  }
+  .sub { color: var(--ink-soft); margin: 0 0 26px; max-width: 62ch; }
+  p { max-width: 65ch; }
+  strong { color: var(--ink); font-weight: 650; }
+
+  /* ---- scoreboard ---- */
+  .board { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .arm {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 22px 20px; box-shadow: var(--shadow);
+  }
+  .arm.rrs { border-color: var(--accent); }
+  .arm h3 { margin: 0 0 2px; font-family: var(--mono); font-size: .95rem; font-weight: 600; }
+  .arm .tag { font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; }
+  .arm.bare .tag { color: var(--lost); }
+  .arm.rrs .tag { color: var(--accent); }
+  .metric { margin-top: 18px; }
+  .metric .lbl { font-size: .82rem; color: var(--ink-soft); margin-bottom: 7px; }
+  .dots { display: flex; gap: 7px; align-items: center; }
+  .dot { width: 15px; height: 15px; border-radius: 50%; flex: none; }
+  .dot.hit { background: var(--accent); }
+  .dot.miss { background: transparent; border: 1.5px solid var(--lost); position: relative; }
+  .dot.miss::after {
+    content: ""; position: absolute; inset: 3px; border-radius: 50%;
+    background: var(--lost); opacity: .28;
+  }
+  .score { margin-left: auto; font-family: var(--mono); font-weight: 600; font-size: .9rem;
+    font-variant-numeric: tabular-nums; }
+  .arm.bare .score { color: var(--lost); }
+  .arm.rrs .score { color: var(--accent); }
+
+  .conf { margin-top: 22px; padding-top: 18px; border-top: 1px dashed var(--line); }
+  .conf .lbl { font-size: .82rem; color: var(--ink-soft); margin-bottom: 8px; }
+  .meter { height: 9px; border-radius: 5px; background: var(--line); overflow: hidden; }
+  .meter i { display: block; height: 100%; border-radius: 5px; width: 0; transition: width 1.1s cubic-bezier(.2,.7,.2,1); }
+  .arm.bare .meter i { background: var(--lost); }
+  .arm.rrs .meter i { background: var(--accent); }
+  .conf .val { font-family: var(--mono); font-weight: 600; font-size: 1.4rem; margin-top: 8px;
+    font-variant-numeric: tabular-nums; }
+
+  .readout {
+    margin-top: 26px; background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--accent);
+    border-radius: 8px; padding: 18px 20px; font-size: .98rem; color: var(--ink-soft);
+  }
+  .readout b { color: var(--ink); }
+
+  /* ---- files ---- */
+  .files { display: grid; gap: 10px; margin-top: 6px; }
+  .file {
+    display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: baseline;
+    background: var(--card); border: 1px solid var(--line); border-radius: 9px; padding: 14px 18px;
+  }
+  .file code { font-family: var(--mono); font-size: .86rem; color: var(--accent); font-weight: 600; white-space: nowrap; }
+  .file span { font-size: .95rem; color: var(--ink-soft); }
+
+  /* ---- how the trap worked / quote ---- */
+  .pull {
+    font-family: var(--mono); font-size: 1.12rem; line-height: 1.5; color: var(--ink);
+    border-left: 3px solid var(--lost); padding: 4px 0 4px 20px; margin: 24px 0 0; max-width: 58ch;
+  }
+
+  /* ---- honesty chips ---- */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .chip {
+    font-family: var(--mono); font-size: .74rem; color: var(--ink-soft);
+    background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px;
+  }
+
+  /* ---- cta ---- */
+  .cta { text-align: left; }
+  .steps { counter-reset: s; display: grid; gap: 14px; margin: 8px 0 0; padding: 0; list-style: none; }
+  .steps li { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: baseline; }
+  .steps li::before {
+    counter-increment: s; content: counter(s); font-family: var(--mono); font-weight: 600;
+    color: var(--accent); border: 1px solid var(--accent); border-radius: 6px;
+    width: 26px; height: 26px; display: grid; place-items: center; font-size: .8rem;
+  }
+  .prompt {
+    font-family: var(--mono); font-size: .88rem; background: var(--card); border: 1px solid var(--line);
+    border-radius: 8px; padding: 14px 16px; color: var(--ink); margin-top: 18px; overflow-x: auto;
+  }
+  .prompt .c { color: var(--ink-faint); }
+
+  footer { padding: 40px 0 64px; color: var(--ink-faint); font-family: var(--mono); font-size: .78rem; }
+
+  @media (max-width: 560px) { .board { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) {
+    .meter i { transition: none; }
+    * { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="filmstrip" aria-hidden="true">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    <div class="eyebrow">Readable Repo Standard · cold-start test</div>
+    <h1 style="margin-top:14px">Put the agent harness<br>in the <span class="pen">repo</span>.</h1>
+    <p class="lede">Every agent harness is built differently. So instead of wrapping the model in a
+      harness, we put the harness minimum, the brain, the memory, the vocabulary, into the repo
+      itself. Then any blank model opens the folder and just knows what to do next. And we measured
+      whether it holds up.</p>
+    <div class="byline">the repo is the book · the model is only the pen · a pre-registered A/B experiment</div>
+  </header>
+
+  <section>
+    <div class="eyebrow">The problem</div>
+    <h2>A five-minute pause and a three-month pause look identical to a model</h2>
+    <p class="sub">It starts from zero every time. And after a long gap, <em>you</em> have forgotten the
+      state too. If the "what's done, what's next, and why" lived only in the last conversation, it is gone.
+      The next agent has to guess, and it fills every gap with a confident guess.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">The test</div>
+    <h2>One project, two repos, identical code</h2>
+    <p class="sub">A tiny synthetic tool. The only difference between the two copies: one has four small
+      files that record the state (<span class="mono">START_HERE · STATE · MANIFEST · GLOSSARY</span>).
+      We dropped blank agents into each, cold, and asked for the single correct next action. The project
+      had a trap: a feature that <em>looked</em> finishable but was deliberately parked, while the real
+      next task was a subtle bug whose priority lived only in <span class="mono">STATE.md</span>.</p>
+
+    <div class="board">
+      <div class="arm bare">
+        <div class="tag">control</div>
+        <h3>Bare repo</h3>
+        <div class="metric">
+          <div class="lbl">Correct next action</div>
+          <div class="dots"><span class="dot miss"></span><span class="dot miss"></span><span class="dot miss"></span><span class="score">0 / 3</span></div>
+        </div>
+        <div class="metric">
+          <div class="lbl">Avoided the parked-feature trap</div>
+          <div class="dots"><span class="dot miss"></span><span class="dot miss"></span><span class="dot miss"></span><span class="score">0 / 3</span></div>
+        </div>
+        <div class="metric">
+          <div class="lbl">Named the hidden constraint</div>
+          <div class="dots"><span class="dot miss"></span><span class="dot miss"></span><span class="dot miss"></span><span class="score">0 / 3</span></div>
+        </div>
+        <div class="conf">
+          <div class="lbl">Self-reported confidence, while wrong</div>
+          <div class="meter"><i data-w="82"></i></div>
+          <div class="val">82<span style="color:var(--ink-faint);font-size:.9rem">/100</span></div>
+        </div>
+      </div>
+
+      <div class="arm rrs">
+        <div class="tag">treatment</div>
+        <h3>Readable repo</h3>
+        <div class="metric">
+          <div class="lbl">Correct next action</div>
+          <div class="dots"><span class="dot hit"></span><span class="dot hit"></span><span class="dot hit"></span><span class="score">3 / 3</span></div>
+        </div>
+        <div class="metric">
+          <div class="lbl">Avoided the parked-feature trap</div>
+          <div class="dots"><span class="dot hit"></span><span class="dot hit"></span><span class="dot hit"></span><span class="score">3 / 3</span></div>
+        </div>
+        <div class="metric">
+          <div class="lbl">Named the hidden constraint</div>
+          <div class="dots"><span class="dot hit"></span><span class="dot hit"></span><span class="dot hit"></span><span class="score">3 / 3</span></div>
+        </div>
+        <div class="conf">
+          <div class="lbl">Self-reported confidence, and right</div>
+          <div class="meter"><i data-w="98"></i></div>
+          <div class="val">98<span style="color:var(--ink-faint);font-size:.9rem">/100</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="readout">
+      Every bare agent confidently did the wrong thing: it worked on the feature that <b>looked</b>
+      finishable instead of the real priority. The readable repo let every agent take the correct action,
+      refuse the parked feature, and name the hidden rule.
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Why it happened</div>
+    <h2>The bare agent is not less capable. It is uninformed — and confidently so.</h2>
+    <p class="sub">One bare agent even <em>spotted</em> the real bug in the code, and dismissed it anyway,
+      because nothing in the repo told it that was the priority.</p>
+    <blockquote class="pull">Seeing the bug was not enough.<br>Knowing it was next required the recorded state.</blockquote>
+  </section>
+
+  <section>
+    <div class="eyebrow">How it works</div>
+    <h2>Four files at the root, plus a one-line bridge</h2>
+    <p class="sub">No framework, no runtime, no tool lock-in. One external rule: open
+      <span class="mono">START_HERE.md</span> first. From there the repo carries itself.</p>
+    <div class="files">
+      <div class="file"><code>START_HERE.md</code><span>The entry point. What this is, a map, where to go next.</span></div>
+      <div class="file"><code>STATE.md</code><span>The memory. The one next action, what's done, what's parked, decisions with <em>why</em>.</span></div>
+      <div class="file"><code>MANIFEST.md</code><span>How to run it and what it needs.</span></div>
+      <div class="file"><code>GLOSSARY.md</code><span>Every project-specific term, defined once.</span></div>
+      <div class="file"><code>AGENTS.md</code><span>A three-line bridge that points any agent to START_HERE.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Honest boundaries</div>
+    <h2>What this does not claim</h2>
+    <p class="sub">The result is real, and it is bounded. The point of a pre-registered test is to report
+      the limits as loudly as the wins.</p>
+    <div class="chips">
+      <span class="chip">predictions written before running</span>
+      <span class="chip">a leak caught &amp; re-run in isolation</span>
+      <span class="chip">good code comments shrink the gap</span>
+      <span class="chip">same model family — cross-harness run still open</span>
+      <span class="chip">RRS complements code hygiene, not replaces it</span>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="eyebrow">Try it in five minutes</div>
+    <h2>Run the cold-start test on your own repo</h2>
+    <ol class="steps">
+      <li>Open a fresh agent session with no context about one of your projects.</li>
+      <li>Point it at the folder and ask the prompt below.</li>
+      <li>Add the four files. Ask again. Compare how much it has to guess.</li>
+    </ol>
+    <div class="prompt"><span class="c"># paste into a blank agent, pointed at a repo</span><br>
+      Pick this project up cold, with no prior memory of it.<br>
+      What is the single correct next action, and what must I respect?</div>
+  </section>
+
+  <footer class="wrap">
+    Readable Repo Standard · open &amp; synthetic · the numbers, raw runs and honesty log live in the repo.
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function fill() {
+      document.querySelectorAll(".meter i").forEach(function (el) {
+        var w = el.getAttribute("data-w") + "%";
+        if (reduce) { el.style.width = w; return; }
+        requestAnimationFrame(function () { setTimeout(function () { el.style.width = w; }, 120); });
+      });
+    }
+    if ("IntersectionObserver" in window && !reduce) {
+      var seen = false;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting && !seen) { seen = true; fill(); } });
+      }, { threshold: .3 });
+      var board = document.querySelector(".board");
+      if (board) io.observe(board); else fill();
+    } else { fill(); }
+  })();
+</script>
+</body>
+</html>
