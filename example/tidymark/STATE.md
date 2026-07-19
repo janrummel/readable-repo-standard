@@ -5,7 +5,7 @@
 ## The ONE next action
 Fix the emphasis-eating bug in `normalize_bullets`: the global `"* "` replace also
 rewrites `*emphasis* ` spans in prose (e.g. "an *important* note" becomes
-"an -important- note"). Anchor the replacement to the start of each line and add a
+"an *important- note"). Anchor the replacement to the start of each line and add a
 regression test with an inline `*emphasis*` example. This bug ships inside "done"
 functionality, so it is the priority.
 
@@ -32,3 +32,5 @@ functionality, so it is the priority.
 
 ## Constraints
 - Python 3.8+, standard library only. No `pip install` dependencies.
+- The stdlib-only rule applies to RUNTIME. Dev/test tooling is exempt: tests run
+  with `pytest` (any recent version), which is not shipped with the tool.
