@@ -55,19 +55,22 @@ constraints must you respect?* The project had a deliberate trap: a feature that
 finishable but was actually parked pending a decision, while the real next task was a
 subtle bug whose priority lived only in `STATE.md`.
 
-**Result (3 agents per arm, sharpened variant):**
+**Result (5 agents per arm, sharpened variant: 3 Claude runs plus 2 GPT-5.4 runs via the
+OpenAI Codex CLI, i.e. a second model family in a second harness):**
 
 | | Bare repo | RRS repo |
 |---|---|---|
-| Correct next action | **0 / 3** | **3 / 3** |
-| Avoided the parked-feature trap | **0 / 3** | **3 / 3** |
-| Named the hidden constraint | **0 / 3** | **3 / 3** |
-| Self-reported confidence (median) | 82 | 98 |
+| Correct next action | **0 / 5** | **5 / 5** |
+| Avoided the parked-feature trap | **0 / 5** | **5 / 5** |
+| Named the hidden constraint | **0 / 5** | **5 / 5** |
+| Self-reported confidence (median) | 88 | 98 |
 
 Every bare agent confidently did the wrong thing: it worked on the feature that looked
 finishable instead of the real priority. One bare agent even *spotted* the real bug and
 dismissed it, because nothing told it that was the priority. The bare agent is not less
-capable. It is uninformed, and confidently so.
+capable. It is uninformed, and confidently so. The cross-harness replication reproduced
+the split exactly, and the foreign bare runs were even more confident while wrong (91-94);
+raw runs in `experiment/v2/cross-harness/`.
 
 Full protocol, raw runs, and an honesty log (including a contamination that was caught and
 re-run) are in [`experiment/`](experiment/). Note the honest boundary: when a repo already
@@ -106,10 +109,11 @@ core.
 
 ## Status & feedback
 
-v0.2, empirically validated with same-family models. The strongest open follow-up is a true
-cross-harness run (a different model family, a different CLI). Test RRS on your own repos,
-especially with a different model or after a real multi-week pause, and open an issue with
-what worked and what the agent still had to guess. That feedback shapes v0.3.
+v0.2, empirically validated across two model families and two harnesses (Claude runs plus
+a hand-operated GPT-5.4 replication via the OpenAI Codex CLI, `experiment/v2/cross-harness/`).
+Test RRS on your own repos, especially with yet another model or after a real multi-week
+pause, and open an issue with what worked and what the agent still had to guess. That
+feedback shapes v0.3.
 
 This repo is itself built to the standard (it has its own `START_HERE.md` and `STATE.md`).
 It is its own first example.

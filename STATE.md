@@ -4,20 +4,21 @@
 > Status lives ONLY here; other files do not declare their own completeness.
 
 ## The ONE next action
-Update the public claim surfaces with the cross-harness result, then push (push needs
-the owner's go, public repo): the "same model family" limitation wording in `README.md`
-and `experiment/` docs, and the landing scoreboard in `docs/index.html`. The evidence
-now reads: bare 0/5 vs RRS 5/5 across two model families. Raw evidence and grading are
-already committed (see Done).
+v0.3 direction: the optional companion layer (see `companion/README.md`) — a
+deterministic conformance linter first, then a generative tracking-proposer that
+suggests STATE.md entries at the moment state is created. Kept OUTSIDE the core.
+No deadline; tester feedback from the published repo may reprioritize this.
 
 ## Next
-- v0.3 direction: the optional companion layer (see `companion/README.md`) — a
-  deterministic conformance linter first, then a generative tracking-proposer that
-  suggests STATE.md entries at the moment state is created. Kept OUTSIDE the core.
-- Optional follow-up content: LinkedIn update with the cross-harness scoreboard
-  (the launch post's storyline now has a foreign-model witness).
+- Watch for issues/feedback on the published repo (tester CTA in README).
 
 ## Done
+- Public claim surfaces updated to the combined cross-harness evidence (2026-07-19):
+  README scoreboard + status section, STANDARD.md status line, experiment/README
+  (new replication section, limitation closed), landing page (meta descriptions,
+  5-dot scoreboard, confidence meter 88, integrity chip). Combined figures: bare 0/5
+  vs RRS 5/5, confidence medians 88 vs 98. A LinkedIn follow-up comment under the
+  launch post was drafted for the owner to publish by hand.
 - **Cross-harness replication (2026-07-19): bare 0/2 vs RRS 2/2 with GPT-5.4 via the
   OpenAI Codex app** (fresh session per run, read-only, executed by the owner by hand;
   disposable arm copies with neutral names, ground truth kept outside the folder tree).

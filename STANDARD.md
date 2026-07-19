@@ -8,9 +8,10 @@
 > lives in the folder, not in the model and not in the chat. The pen is replaceable.
 
 Status: v0.2. Validated by a pre-registered A/B experiment (see `experiment/`). On the
-sharpened test, a bare repo scored 0/3 on the correct next action while an RRS repo
-scored 3/3, with self-reported agent confidence of 82 vs 98 (medians, n=3 per arm). See
-`experiment/` for the full protocol, raw runs, and honest limits.
+sharpened test, bare repos scored 0/5 on the correct next action while RRS repos scored
+5/5, with self-reported agent confidence of 88 vs 98 (medians, n=5 per arm across two
+model families: Claude and GPT-5.4 via the OpenAI Codex CLI). See `experiment/` for the
+full protocol, raw runs, and honest limits.
 
 ---
 

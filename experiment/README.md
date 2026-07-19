@@ -28,14 +28,24 @@ the `FIXME` was removed, so the correct next action was knowable only from `STAT
 Every bare agent confidently worked on the wrong thing. One even spotted the real bug
 and dismissed it, because nothing told it that was the priority.
 
+### Cross-harness replication (`v2/cross-harness/`)
+The v2 arms were re-run on 2026-07-19 with a different model family in a different
+harness: GPT-5.4 via the OpenAI Codex CLI, fresh session per run, read-only, operated
+by hand. Result: bare **0/2** vs RRS **2/2** on all three metrics; the bare runs were
+even MORE confident while wrong (91-94) than the Claude runs. Combined v2 evidence:
+**bare 0/5 vs RRS 5/5.** The foreign model also surfaced two real documentation defects
+in the treatment files (both fixed in `../example/tidymark`, frozen arm copies untouched).
+
 ## Honesty log
 - Predictions were pre-registered before running (`PREREGISTRATION*` files).
 - v1's first batch had a leak: 2 bare agents walked out of their folder while hunting
   for missing context and read the ground-truth file. Those runs were **discarded** and
   re-run in isolated, folder-locked copies. v2 was folder-locked from the start; no leak.
   (The wandering itself is a signal: bare agents cast a wider net for missing context.)
-- Limitation: all runs used the same model family. A true cross-harness run (different
-  model, different CLI) is the strongest remaining evidence and is an open follow-up.
+- Former limitation, closed 2026-07-19: the original runs all used the same model
+  family. The cross-harness replication (GPT-5.4 / Codex CLI, see above) reproduced the
+  split exactly. Remaining honest bounds: one synthetic project, small n per arm,
+  self-reported confidence scores.
 
 ## Reproduce it
 Point a fresh agent at `v2/arm-a-bare` and then at `v2/arm-b-rrs` with the prompt from

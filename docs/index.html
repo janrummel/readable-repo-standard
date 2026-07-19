@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Readable Repo Standard: the cold-start test</title>
-<meta name="description" content="Put the agent-harness minimum inside the repo, so any blank AI model can open the folder and continue cold. A pre-registered A/B test: bare repo 0/3, readable repo 3/3.">
+<meta name="description" content="Put the agent-harness minimum inside the repo, so any blank AI model can open the folder and continue cold. A pre-registered A/B test across two model families: bare repo 0/5, readable repo 5/5.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Readable Repo Standard">
-<meta property="og:description" content="Put the agent-harness minimum inside the repo, so any blank AI model can open the folder and continue cold. Bare repo 0/3, readable repo 3/3.">
+<meta property="og:description" content="Put the agent-harness minimum inside the repo, so any blank AI model can open the folder and continue cold. Bare repo 0/5, readable repo 5/5, across two model families.">
 <meta property="og:url" content="https://janrummel.github.io/readable-repo-standard/">
 <meta property="og:image" content="https://janrummel.github.io/readable-repo-standard/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -218,20 +218,20 @@
         <h3>Bare repo</h3>
         <div class="metric">
           <div class="lbl">Correct next action</div>
-          <div class="dots"><span class="dot miss"></span><span class="dot miss"></span><span class="dot miss"></span><span class="score">0 / 3</span></div>
+          <div class="dots"><span class="dot miss"></span><span class="dot miss"></span><span class="dot miss"></span><span class="dot miss"></span><span class="dot miss"></span><span class="score">0 / 5</span></div>
         </div>
         <div class="metric">
           <div class="lbl">Avoided the parked-feature trap</div>
-          <div class="dots"><span class="dot miss"></span><span class="dot miss"></span><span class="dot miss"></span><span class="score">0 / 3</span></div>
+          <div class="dots"><span class="dot miss"></span><span class="dot miss"></span><span class="dot miss"></span><span class="dot miss"></span><span class="dot miss"></span><span class="score">0 / 5</span></div>
         </div>
         <div class="metric">
           <div class="lbl">Named the hidden constraint</div>
-          <div class="dots"><span class="dot miss"></span><span class="dot miss"></span><span class="dot miss"></span><span class="score">0 / 3</span></div>
+          <div class="dots"><span class="dot miss"></span><span class="dot miss"></span><span class="dot miss"></span><span class="dot miss"></span><span class="dot miss"></span><span class="score">0 / 5</span></div>
         </div>
         <div class="conf">
           <div class="lbl">Self-reported confidence, while wrong</div>
-          <div class="meter"><i data-w="82"></i></div>
-          <div class="val">82<span style="color:var(--ink-faint);font-size:.9rem">/100</span></div>
+          <div class="meter"><i data-w="88"></i></div>
+          <div class="val">88<span style="color:var(--ink-faint);font-size:.9rem">/100</span></div>
         </div>
       </div>
 
@@ -240,15 +240,15 @@
         <h3>Readable repo</h3>
         <div class="metric">
           <div class="lbl">Correct next action</div>
-          <div class="dots"><span class="dot hit"></span><span class="dot hit"></span><span class="dot hit"></span><span class="score">3 / 3</span></div>
+          <div class="dots"><span class="dot hit"></span><span class="dot hit"></span><span class="dot hit"></span><span class="dot hit"></span><span class="dot hit"></span><span class="score">5 / 5</span></div>
         </div>
         <div class="metric">
           <div class="lbl">Avoided the parked-feature trap</div>
-          <div class="dots"><span class="dot hit"></span><span class="dot hit"></span><span class="dot hit"></span><span class="score">3 / 3</span></div>
+          <div class="dots"><span class="dot hit"></span><span class="dot hit"></span><span class="dot hit"></span><span class="dot hit"></span><span class="dot hit"></span><span class="score">5 / 5</span></div>
         </div>
         <div class="metric">
           <div class="lbl">Named the hidden constraint</div>
-          <div class="dots"><span class="dot hit"></span><span class="dot hit"></span><span class="dot hit"></span><span class="score">3 / 3</span></div>
+          <div class="dots"><span class="dot hit"></span><span class="dot hit"></span><span class="dot hit"></span><span class="dot hit"></span><span class="dot hit"></span><span class="score">5 / 5</span></div>
         </div>
         <div class="conf">
           <div class="lbl">Self-reported confidence, and right</div>
@@ -296,7 +296,7 @@
       <span class="chip">predictions written before running</span>
       <span class="chip">a leak caught &amp; re-run in isolation</span>
       <span class="chip">good code comments shrink the gap</span>
-      <span class="chip">same model family, cross-harness run still open</span>
+      <span class="chip">replicated cross-harness: Claude + GPT-5.4/Codex</span>
       <span class="chip">RRS complements code hygiene, not replaces it</span>
     </div>
   </section>
