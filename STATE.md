@@ -4,19 +4,30 @@
 > Status lives ONLY here; other files do not declare their own completeness.
 
 ## The ONE next action
-Run a true cross-harness litmus test: a different model family / different CLI (e.g. a
-non-Claude agent) on `example/tidymark`, read-only, using the prompt in
-`experiment/v2/PREREGISTRATION-v2.md`. It is the strongest open evidence for the
-model-agnosticism claim, and the honest limit called out everywhere else.
+Update the public claim surfaces with the cross-harness result, then push (push needs
+the owner's go, public repo): the "same model family" limitation wording in `README.md`
+and `experiment/` docs, and the landing scoreboard in `docs/index.html`. The evidence
+now reads: bare 0/5 vs RRS 5/5 across two model families. Raw evidence and grading are
+already committed (see Done).
 
 ## Next
-- A true cross-harness litmus run: a different model family / different CLI on
-  `example/tidymark`, to strengthen the model-agnosticism claim beyond same-family runs.
 - v0.3 direction: the optional companion layer (see `companion/README.md`) — a
   deterministic conformance linter first, then a generative tracking-proposer that
   suggests STATE.md entries at the moment state is created. Kept OUTSIDE the core.
+- Optional follow-up content: LinkedIn update with the cross-harness scoreboard
+  (the launch post's storyline now has a foreign-model witness).
 
 ## Done
+- **Cross-harness replication (2026-07-19): bare 0/2 vs RRS 2/2 with GPT-5.4 via the
+  OpenAI Codex app** (fresh session per run, read-only, executed by the owner by hand;
+  disposable arm copies with neutral names, ground truth kept outside the folder tree).
+  Combined with the Claude v2 runs: bare 0/5 vs RRS 5/5 on all three pre-registered
+  metrics; the Codex bare runs were MORE confidently wrong (91-94) than Claude's (82-88).
+  Bonus finding: the foreign model audited the treatment files and surfaced two real
+  documentation defects (STATE's corruption example was slightly off; pytest vs
+  stdlib-only ambiguity). Both fixed in `example/tidymark`; the frozen arm copies in
+  `experiment/v2/arm-*` are deliberately untouched as run evidence. Raw runs, prompt,
+  and grading: `experiment/v2/cross-harness/` + RESULTS-v2 "Cross-harness replication".
 - `STANDARD.md` v0.2 written (touchstone, four files + AGENTS bridge, human-vs-model
   docs, snapshot discipline, houses, litmus protocol with per-question scoring, code-repo
   execution layer, exit criterion).

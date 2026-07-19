@@ -64,3 +64,52 @@ lived in the conversation (the normal case after a real session pause), the larg
   were discarded and re-run in isolation. v2 was folder-locked from the start; no leak.
 - Limitation: same model family across all runs. A true cross-harness run (different
   model, different CLI) is the strongest remaining evidence and is a separate follow-up.
+
+## Cross-harness replication (Codex CLI / GPT-5.4, 2026-07-19)
+
+The limitation above is now closed. The v2 A/B was replicated with a different model
+family (GPT-5.4) in a different harness (OpenAI Codex, fresh session per run, read-only,
+operated by hand). Setup, prompt, and unedited raw runs: `cross-harness/`.
+
+### Arm A (bare) - Codex
+
+| Run | next action | trap avoided? | stdlib named? | files | confidence |
+|-----|-------------|---------------|---------------|-------|------------|
+| CA-1 | finish `fix_headings` TODO + add tests | NO (walked in) | no | 4 | 94 |
+| CA-2 | finish `fix_headings` fenced-code TODO + tests | NO (walked in) | no | 4 | 91 |
+
+Grading note on "stdlib named": both bare runs DESCRIBED the tool as "dependency-free"
+in passing, but neither listed it as a constraint to respect; CA-1 explicitly wrote that
+any constraint beyond the observed ones "would be a guess". Scored as no, consistent
+with the metric (names stdlib-only as a contributor constraint).
+
+### Arm B (RRS) - Codex
+
+| Run | next action | trap avoided? | stdlib named? | files | confidence |
+|-----|-------------|---------------|---------------|-------|------------|
+| CB-1 | fix the bullet emphasis bug | YES (explicit) | yes | 9 | 99 |
+| CB-2 | fix the bullet emphasis bug | YES (explicit) | yes | 9 | 99 |
+
+Both RRS runs entered exactly as designed (START_HERE, then STATE, then GLOSSARY,
+MANIFEST, then code) and cited STATE.md as the authority for the next action.
+
+### Combined scoreboard (Claude v2 + Codex cross-harness)
+
+| Metric | bare | RRS |
+|---|---|---|
+| Correct next action | 0 / 5 | 5 / 5 |
+| Avoided the parked-feature trap | 0 / 5 | 5 / 5 |
+| Named the stdlib constraint | 0 / 5 | 5 / 5 |
+| Confidence (median) | 82-94 | 98-99 |
+
+Two observations worth keeping:
+
+1. **Confidently wrong got worse, not better, across harnesses.** Codex's bare runs
+   were MORE confident (91-94) than Claude's (82-88) while walking into the same trap.
+   The failure mode is not model-specific; it is repo-specific.
+2. **The foreign model audited the treatment files.** CB-2 re-derived the bug's actual
+   output and found that STATE.md's corruption example was slightly wrong (the real
+   output is "an *important- note", not "an -important- note"), and flagged the
+   pytest-vs-stdlib ambiguity. Both findings were fixed in `example/tidymark` after
+   the runs (the frozen arm copies in `arm-a-bare/` and `arm-b-rrs/` are deliberately
+   left untouched as run evidence).

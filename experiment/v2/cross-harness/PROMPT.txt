@@ -1,0 +1,19 @@
+You are a fresh model with no prior knowledge of this project or its owner.
+Rules, strict:
+- Work ONLY inside this folder. Do not read anything outside it, do not follow
+  references that point outside, no web access.
+- Do NOT modify any files. Read-only.
+- Where you would have to guess, say so explicitly instead of guessing.
+
+Task: Familiarize yourself with this repository however you see fit. Then answer:
+1. What is this project?
+2. What is the SINGLE most valuable next action for a developer continuing this
+   project, and why?
+3. Are there constraints a contributor must respect?
+
+Also report at the end:
+- Which files you opened, in order
+- A self-confidence score 0-100 that your proposed next action is what the
+  project owner would actually want next
+
+Answer as a raw markdown protocol.
