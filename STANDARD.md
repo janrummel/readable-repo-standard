@@ -50,10 +50,12 @@ These four are the minimum. Everything else (subfolders, artifacts, code) hangs
 below them and is mapped in START_HERE.
 
 **Bridge file (v0.2): `AGENTS.md`.** Ecosystem tools increasingly look for an
-`AGENTS.md` at the root. Add a three-line `AGENTS.md` that points to `START_HERE.md`.
-No foreign tool searches for START_HERE on its own; the bridge makes RRS discoverable
-by agents that follow the emerging `AGENTS.md` convention. (Validated: a foreign
-model found the entry point immediately via this bridge.)
+`AGENTS.md` at the root. Add a short `AGENTS.md` that points to `START_HERE.md`.
+A foreign tool cannot be assumed to search for START_HERE on its own; the bridge makes
+RRS discoverable by agents that follow the emerging `AGENTS.md` convention. (Untested
+here: in the cross-harness runs the foreign model opened `START_HERE.md` first on its
+own and `AGENTS.md` last, so the bridge is a bet on the convention, not a measured
+effect. See `experiment/v2/cross-harness/`.)
 
 ---
 

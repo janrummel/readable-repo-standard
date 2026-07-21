@@ -35,7 +35,7 @@
 <body>
 
 <div class="frame">
-<svg viewBox="48 116 664 292" role="img" aria-label="A model or agent on the left docks onto a self-explaining repo on the right. The model is interchangeable and arrives without memory; the repo is constant and its memory lives in git. Flow one: dock on via START_HERE, then STATE plus context and rules. Flow two: work, update STATE, freeze a snapshot. A cycle arrow shows the next session bringing a new pen to the same book, with no context lost. The pen is interchangeable, the book carries the knowledge.">
+<svg viewBox="48 116 664 292" role="img" aria-label="A model or agent on the left docks onto a self-explaining repo on the right. The model is interchangeable and arrives without memory; the repo is constant and its memory lives in git. Flow one: dock on via START_HERE, then STATE plus context and rules. Flow two: work, update STATE, freeze a snapshot. The repo box lists the four files that carry the state: START_HERE.md, STATE.md, MANIFEST.md and GLOSSARY.md. A cycle arrow shows the next session bringing a new pen to the same book, with the state still in place. The pen is interchangeable, the book carries the knowledge.">
   <defs>
     <marker id="rrs-ar" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 Z" fill="var(--ink-soft)"/></marker>
     <marker id="rrs-arA" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 Z" fill="var(--accent)"/></marker>
@@ -85,7 +85,7 @@
   <!-- CYCLE: next session, new pen -->
   <path d="M620,296 C620,350 480,362 380,362 C260,362 150,352 150,300" fill="none" stroke="var(--lost)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#rrs-arL)"/>
   <text x="385" y="349" text-anchor="middle" font-size="9.5" fill="var(--lost)"
-        stroke="var(--card)" stroke-width="5" paint-order="stroke">&#8635; next session: new pen, same book &mdash; no context lost</text>
+        stroke="var(--card)" stroke-width="5" paint-order="stroke">&#8635; next session: new pen, same book, the state is still there</text>
 
   <!-- Tagline -->
   <text x="380" y="396" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">The pen is interchangeable. The book carries the knowledge.</text>

@@ -6,7 +6,8 @@ standard is in this folder. No second house, no external dependencies.
 
 ## Environment
 - To read and apply the standard: any Markdown reader. No build step.
-- To run the worked example (`example/tidymark`): Python 3.8+, standard library only.
+- To run the worked example (`example/tidymark`): Python 3.8+. The tool itself is
+  standard library only; the tests use `pytest`, which is dev tooling and not shipped.
   Test with `python -m pytest`.
 - To reproduce the experiment: an AI agent harness that can run isolated, read-only
   subagents (any will do; the runs in `experiment/` used same-family models).
