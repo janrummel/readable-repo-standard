@@ -14,6 +14,12 @@ because the state lives in the folder, not in the chat.
 > The repo is the book. The model is only the pen. The knowledge lives in the folder,
 > so neither the model nor the person has to remember it.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/docking-diagram-dark.png">
+  <img src="assets/docking-diagram-light.png" width="920"
+       alt="A model or agent on the left docks onto a self-explaining repo on the right. The model is interchangeable and arrives without memory; the repo is constant and its memory lives in git. Flow one: dock on via START_HERE, then STATE plus context and rules. Flow two: work, update STATE, freeze a snapshot. A cycle arrow shows the next session bringing a new pen to the same book, with no context lost. The pen is interchangeable, the book carries the knowledge.">
+</picture>
+
 The first concrete step is small: four files at the root plus a one-line `AGENTS.md`
 bridge. Start there.
 

@@ -80,6 +80,15 @@
   .lede { font-size: 1.18rem; color: var(--ink-soft); max-width: 60ch; margin: 0; }
   .byline { margin-top: 26px; font-family: var(--mono); font-size: .8rem; color: var(--ink-faint); }
 
+  /* ---- docking diagram (hero) ---- */
+  /* Kept in sync with assets/docking-diagram.html, the render source for the README images. */
+  .diagram {
+    margin: 30px 0 0; background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 12px 14px; box-shadow: var(--shadow);
+    overflow-x: auto; /* narrow screens scroll the diagram instead of shrinking it to nothing */
+  }
+  .diagram svg { width: 100%; min-width: 520px; height: auto; display: block; font-family: var(--mono); }
+
   /* ---- sections ---- */
   section { padding: 46px 0; border-bottom: 1px solid var(--line); }
   h2 {
@@ -193,6 +202,64 @@
       itself. Then any blank model opens the folder and just knows what to do next. And a
       pre-registered test measured whether it holds up.</p>
     <div class="byline">the repo is the book · the model is only the pen · a pre-registered A/B experiment</div>
+
+    <figure class="diagram">
+      <svg viewBox="48 116 664 292" role="img" aria-label="A model or agent on the left docks onto a self-explaining repo on the right. The model is interchangeable and arrives without memory; the repo is constant and its memory lives in git. Flow one: dock on via START_HERE, then STATE plus context and rules. Flow two: work, update STATE, freeze a snapshot. A cycle arrow shows the next session bringing a new pen to the same book, with no context lost. The pen is interchangeable, the book carries the knowledge.">
+        <defs>
+          <marker id="rrs-ar" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 Z" fill="var(--ink-soft)"/></marker>
+          <marker id="rrs-arA" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 Z" fill="var(--accent)"/></marker>
+          <marker id="rrs-arL" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 Z" fill="var(--lost)"/></marker>
+        </defs>
+
+        <!-- LEFT: the interchangeable model -->
+        <g>
+          <rect x="86" y="150" width="150" height="150" rx="8" fill="var(--card)" stroke="var(--line)"/>
+          <rect x="76" y="140" width="150" height="150" rx="8" fill="var(--card)" stroke="var(--line)"/>
+          <rect x="66" y="130" width="150" height="150" rx="8" fill="var(--card)" stroke="var(--ink-faint)" stroke-width="1.4"/>
+          <text x="141" y="158" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">MODEL / AGENT</text>
+          <text x="141" y="176" text-anchor="middle" font-size="9" fill="var(--ink-faint)">the pen &middot; interchangeable</text>
+          <g font-size="9.5" fill="var(--ink-soft)">
+            <rect x="82" y="188" width="52" height="17" rx="3" fill="var(--paper)" stroke="var(--line)"/><text x="108" y="200" text-anchor="middle">Claude</text>
+            <rect x="140" y="188" width="42" height="17" rx="3" fill="var(--paper)" stroke="var(--line)"/><text x="161" y="200" text-anchor="middle">GPT</text>
+            <rect x="188" y="188" width="22" height="17" rx="3" fill="var(--paper)" stroke="var(--line)"/><text x="199" y="200" text-anchor="middle">&hellip;</text>
+          </g>
+          <text x="141" y="223" text-anchor="middle" font-size="8.8" fill="var(--ink-soft)">a bare model OR a whole</text>
+          <text x="141" y="234" text-anchor="middle" font-size="8.8" fill="var(--ink-soft)">agent-harness system</text>
+          <text x="141" y="251" text-anchor="middle" font-size="8.8" fill="var(--lost)">no memory &middot; docks in fresh</text>
+        </g>
+
+        <!-- RIGHT: the self-explaining repo (the book) -->
+        <g>
+          <rect x="548" y="130" width="150" height="160" rx="6" fill="var(--card)" stroke="var(--accent)" stroke-width="1.4"/>
+          <rect x="548" y="130" width="14" height="160" rx="6" fill="var(--accent-tint)" stroke="var(--accent)" stroke-width="1.4"/>
+          <text x="631" y="152" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">REPO</text>
+          <text x="631" y="169" text-anchor="middle" font-size="9" fill="var(--ink-faint)">the book &middot; constant</text>
+          <g font-size="9.5" fill="var(--ink-soft)">
+            <text x="576" y="192">&#9642; START_HERE.md</text>
+            <text x="576" y="209">&#9642; STATE.md</text>
+            <text x="576" y="226">&#9642; MANIFEST.md</text>
+            <text x="576" y="243">&#9642; GLOSSARY.md</text>
+          </g>
+          <text x="631" y="271" text-anchor="middle" font-size="9" fill="var(--accent)">memory lives in git</text>
+        </g>
+
+        <!-- FLOW 1: dock on (repo -> model) -->
+        <path d="M548,178 C420,178 340,180 218,188" fill="none" stroke="var(--ink-soft)" stroke-width="1.6" marker-end="url(#rrs-ar)"/>
+        <text x="383" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">&#9312; dock on: START_HERE &#8594; STATE + context/rules</text>
+
+        <!-- FLOW 2: work + snapshot (model -> repo) -->
+        <path d="M216,244 C340,244 430,244 546,240" fill="none" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#rrs-arA)"/>
+        <text x="383" y="236" text-anchor="middle" font-size="10" fill="var(--accent)">&#9313; work &middot; update STATE &middot; freeze a snapshot</text>
+
+        <!-- CYCLE: next session, new pen -->
+        <path d="M620,296 C620,350 480,362 380,362 C260,362 150,352 150,300" fill="none" stroke="var(--lost)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#rrs-arL)"/>
+        <text x="385" y="349" text-anchor="middle" font-size="9.5" fill="var(--lost)"
+              stroke="var(--card)" stroke-width="5" paint-order="stroke">&#8635; next session: new pen, same book &mdash; no context lost</text>
+
+        <!-- Tagline -->
+        <text x="380" y="396" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">The pen is interchangeable. The book carries the knowledge.</text>
+      </svg>
+    </figure>
   </header>
 
   <section>

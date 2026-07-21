@@ -13,6 +13,16 @@ No deadline; tester feedback from the published repo may reprioritize this.
 - Watch for issues/feedback on the published repo (tester CTA in README).
 
 ## Done
+- Docking diagram added to the two public surfaces (2026-07-21): README shows it directly
+  under the pitch (before "The idea in one screen"), the landing page shows it in the hero
+  under the byline. It is the visual form of the core claim (the pen is interchangeable,
+  the book carries the knowledge), so it sits before the detail, not after it. The landing
+  page carries the SVG inline on its own design tokens (theme-aware, scrolls instead of
+  shrinking on narrow screens); the README uses a light/dark `<picture>` pair.
+  Reproducible: source `assets/docking-diagram.html`, render `./assets/render.sh`
+  (headless Chrome, 2x) into `assets/docking-diagram-{light,dark}.png`. The inline SVG in
+  `docs/index.html` and the render source are duplicates on purpose (no build step);
+  change both together.
 - Public claim surfaces updated to the combined cross-harness evidence (2026-07-19):
   README scoreboard + status section, STANDARD.md status line, experiment/README
   (new replication section, limitation closed), landing page (meta descriptions,
