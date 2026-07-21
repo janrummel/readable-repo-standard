@@ -17,15 +17,15 @@ because the state lives in the folder, not in the chat.
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/docking-diagram-dark.png">
   <img src="assets/docking-diagram-light.png" width="920"
-       alt="A model or agent on the left docks onto a self-explaining repo on the right. The model is interchangeable and arrives without memory; the repo is constant and its memory lives in git. Flow one: dock on via START_HERE, then STATE plus context and rules. Flow two: work, update STATE, freeze a snapshot. A cycle arrow shows the next session bringing a new pen to the same book, with no context lost. The pen is interchangeable, the book carries the knowledge.">
+       alt="A model or agent on the left docks onto a self-explaining repo on the right. The model is interchangeable and arrives without memory; the repo is constant and its memory lives in git. Flow one: dock on via START_HERE, then STATE plus context and rules. Flow two: work, update STATE, freeze a snapshot. The repo box lists the four files that carry the state: START_HERE.md, STATE.md, MANIFEST.md and GLOSSARY.md. A cycle arrow shows the next session bringing a new pen to the same book, with the state still in place. The pen is interchangeable, the book carries the knowledge.">
 </picture>
 
-The first concrete step is small: four files at the root plus a one-line `AGENTS.md`
+The first concrete step is small: four files at the root plus a short `AGENTS.md`
 bridge. Start there.
 
 ## The idea in one screen
 
-Add four files at the root of a repo, plus a one-line bridge:
+Add four files at the root of a repo, plus a short bridge file:
 
 | File | What it holds |
 |---|---|
@@ -33,7 +33,7 @@ Add four files at the root of a repo, plus a one-line bridge:
 | `STATE.md` | The memory. The ONE next action, what's done, what's parked, decisions **with why**. |
 | `MANIFEST.md` | How to run it and what it needs. |
 | `GLOSSARY.md` | Every project-specific term, defined once. |
-| `AGENTS.md` | A three-line bridge that points agents to `START_HERE.md`. |
+| `AGENTS.md` | A short bridge that points agents to `START_HERE.md`. |
 
 One external rule: **open `START_HERE.md` first.** From there the repo carries itself.
 No framework, no runtime, no tool lock-in. Just files and conventions. Full spec in

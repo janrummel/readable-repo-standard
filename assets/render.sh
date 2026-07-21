@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
-# Renders the README images from assets/docking-diagram.html with headless Chrome.
-# Output: assets/docking-diagram-light.png and assets/docking-diagram-dark.png (2x).
+# Renders the project's images from their HTML sources with headless Chrome.
+# Output: assets/docking-diagram-light.png and assets/docking-diagram-dark.png (2x),
+#         docs/og-image.png (the 1200x630 link preview, 1x by spec).
 # Usage: ./assets/render.sh   (run from anywhere; paths resolve relative to this script)
 set -euo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$DIR/.." && pwd)"
 SRC="file://$DIR/docking-diagram.html"
 
 CHROME="${CHROME:-}"
@@ -33,3 +35,12 @@ for theme in light dark; do
     "${SRC}?theme=${theme}" >/dev/null 2>&1
   echo "rendered assets/docking-diagram-${theme}.png"
 done
+
+# Link preview: exactly 1200x630, so no device-scale factor here.
+"$CHROME" --headless --disable-gpu --hide-scrollbars \
+  --force-device-scale-factor=1 \
+  --window-size=1200,630 \
+  --virtual-time-budget=2000 \
+  --screenshot="$ROOT/docs/og-image.png" \
+  "file://$DIR/og-image.html" >/dev/null 2>&1
+echo "rendered docs/og-image.png"

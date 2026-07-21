@@ -13,6 +13,27 @@ No deadline; tester feedback from the published repo may reprioritize this.
 - Watch for issues/feedback on the published repo (tester CTA in README).
 
 ## Done
+- Adversarial expert-role review of the public surfaces (2026-07-21, four lenses:
+  experiment methodologist, standards editor, skeptical adopter + security, technical
+  editor). First remediation block applied, all six verifiable errors:
+  - The link-preview image still showed the v2 Claude-only figures (0/3, 3/3) while every
+    text surface said 0/5, 5/5. Re-rendered, and it now has a source: `assets/og-image.html`
+    plus a branch in `assets/render.sh`, so both public images are reproducible.
+  - `STANDARD.md` claimed the `AGENTS.md` bridge was validated by a foreign model. The
+    repo's own raw runs contradict it: `codex-arm-b-run1.md` lists `AGENTS.md` as the ninth
+    and last file opened. The claim is now stated as untested, with a pointer to the runs.
+  - "one-line" vs "three-line" bridge (both wrong, the file has nine lines) replaced with
+    "a short bridge" on all surfaces.
+  - The landing page described the treatment arm as four files; it carries five, the bridge
+    included. Corrected there and in the "try it yourself" step.
+  - `RESULTS-v2.md` labelled a range as a median and its RRS range excluded B-1's 97. Now
+    "median (range)": 88 (82-94) vs 98 (97-99), which is where the public 88/98 come from.
+  - The root `MANIFEST.md` still carried the stdlib-vs-pytest ambiguity that was fixed in
+    `example/tidymark` after the cross-harness run found it.
+  - The diagram's cycle label used an em-dash; removed, images re-rendered, alt text now
+    also names the four files it shows.
+  Known and NOT yet addressed, see Parked: the claim wording ("empirically validated"),
+  the missing limits on the public surfaces, and the trap-priming sentence in Arm B.
 - Docking diagram added to the two public surfaces (2026-07-21): README shows it directly
   under the pitch (before "The idea in one screen"), the landing page shows it in the hero
   under the byline. It is the visual form of the core claim (the pen is interchangeable,
@@ -78,7 +99,41 @@ No deadline; tester feedback from the published repo may reprioritize this.
     control that would close the "true by construction" critique.
 
 ## Parked (do NOT pick this up as "next")
-- None currently.
+Open findings from the 2026-07-21 expert-role review. Parked, not dismissed: each one is
+a decision waiting to be made, and the honest ones cost credibility every day they stay.
+
+- **Claim wording.** "empirically validated" (`README.md`, `STANDARD.md`) overstates n=5 on
+  one synthetic project with one trap, graded unblinded by the author. Target wording:
+  "tested rather than proven".
+- **Limits belong on the public surfaces.** The real bounds (one synthetic project, small n,
+  self-reported confidence, no Arm C, author-graded) live in `experiment/README.md`; the
+  landing page's "Honest boundaries" chips list wins instead.
+- **Arm B carries a trap-priming sentence.** `experiment/v2/arm-b-rrs/START_HERE.md` warns
+  that parked code can look finished. It is not in `templates/` and not in v1, and it speaks
+  to the graded "trap avoided" metric. Disclose it in the honesty log; remove it and re-run
+  Arm B before the metric is quoted again.
+- **The constraint metric was tightened after the fact.** The pre-registered wording was
+  "names stdlib-only"; both bare Codex runs wrote "dependency-free" in their first sentence.
+  Under the literal rule that metric is 2/5, not 0/5. Report both readings.
+- **"Raw runs" is promised for all ten runs; only the four Codex runs have transcripts.**
+  Either commit the six Claude transcripts or narrow the wording.
+- **No Arm C** (unstructured `NOTES.md` carrying the same facts). Without it the experiment
+  supports "write the state down" more strongly than it supports this specific file layout.
+- **What must never enter the repo.** The standard tells people to write decisions into git
+  and never says what must stay out (credentials, personal data, NDA content, customer and
+  pricing detail). Git history survives deletion, forking and mirroring, and any docking
+  agent may ship the folder to a third-party model. Needs its own section.
+- **Conformance is defined three ways** (an iff over five questions in §0, the appendix
+  checklist, one question in the README) and there is no MUST/SHOULD/MAY vocabulary, so no
+  statement in the document is objectively binding.
+- **Quick start overwrites an existing `AGENTS.md`.** Needs a merge rule, not a copy rule.
+- **This repo has never run its own litmus test** (§6 requires a result in `tests/`), while
+  the README calls it "its own first example".
+- **Absolutes** ("any blank AI model", "no memory to lose", "just knows what to do next")
+  are falsifiable by one counterexample and contradict `companion/README.md`'s own
+  "one real failure mode: discipline".
+- **Version tag, CHANGELOG, and what v0.x means**; plus a licence split (spec text vs code)
+  and a trademark notice for the model names used in the diagram.
 
 ## Decisions (with why)
 - **Named "Readable Repo Standard", not the working codename.** Why: the original

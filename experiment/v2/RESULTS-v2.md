@@ -100,7 +100,7 @@ MANIFEST, then code) and cited STATE.md as the authority for the next action.
 | Correct next action | 0 / 5 | 5 / 5 |
 | Avoided the parked-feature trap | 0 / 5 | 5 / 5 |
 | Named the stdlib constraint | 0 / 5 | 5 / 5 |
-| Confidence (median) | 82-94 | 98-99 |
+| Confidence, median (range) | 88 (82-94) | 98 (97-99) |
 
 Two observations worth keeping:
 
