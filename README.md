@@ -2,14 +2,14 @@
 
 [**Landing page**](https://janrummel.github.io/readable-repo-standard/) · [The standard](STANDARD.md) · [Templates](templates/) · [The experiment](experiment/)
 
-**Put the agent-harness minimum inside the repo, so any blank AI model can open the folder, understand it, and start working.**
+**Put the agent-harness minimum inside the repo, so a model that arrives without context can read the folder and pick the work up.**
 
 Every agent harness is built differently: its own memory, its own skills, its own
 orchestration. RRS flips that around. Instead of wrapping the model in a harness, it puts
-the harness minimum, the orchestration, the memory, the vocabulary, the state a project
-needs, into the repo itself. Then there is no memory to lose between sessions: a
-five-minute gap and a three-month gap look the same to whoever picks the project up next,
-because the state lives in the folder, not in the chat.
+the part a project cannot outsource, its state, its decisions and its vocabulary, into the
+repo itself, plus the one instruction that says where to start. Then far less is lost
+between sessions: a five-minute gap and a three-month gap look more alike to whoever picks
+the project up next, because the state lives in the folder, not in the chat.
 
 > The repo is the book. The model is only the pen. The knowledge lives in the folder,
 > so neither the model nor the person has to remember it.
