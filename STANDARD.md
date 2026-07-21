@@ -7,11 +7,13 @@
 > Guiding image: **the repo is the book; the model is only the pen.** The knowledge
 > lives in the folder, not in the model and not in the chat. The pen is replaceable.
 
-Status: v0.2. Validated by a pre-registered A/B experiment (see `experiment/`). On the
-sharpened test, bare repos scored 0/5 on the correct next action while RRS repos scored
-5/5, with self-reported agent confidence of 88 vs 98 (medians, n=5 per arm across two
-model families: Claude and GPT-5.4 via the OpenAI Codex CLI). See `experiment/` for the
-full protocol, raw runs, and honest limits.
+Status: v0.2. Tested, not proven. A pre-registered A/B experiment (see `experiment/`) on
+one synthetic project: bare repos scored 0/5 on the correct next action while RRS repos
+scored 5/5, with self-reported agent confidence of 88 vs 98 (medians, n=5 per arm across
+two model families: Claude and GPT-5.4 via the OpenAI Codex CLI). Note what that
+experiment manipulates: whether the state is recorded in the repo at all. It does not yet
+show that this particular file layout beats an unstructured note, and it has no such
+control arm. See `experiment/` for the protocol, the graded runs, and the honest limits.
 
 ---
 
@@ -138,6 +140,30 @@ separates "shareable" from "internal"). Instead of forcing completeness, the rep
 
 ---
 
+## 5a. What must never enter the repo
+
+`STATE.md` is written to git, and git history survives deletion, forking, and mirroring.
+A repo that a cold model can read is also readable by everyone that model reports to.
+So decide what the repo may hold *before* you make it readable.
+
+Never write into a readable repo:
+
+- credentials, tokens, or anything else that grants access;
+- personal data, and never an assessment of a named person;
+- customer, supplier, or pricing detail that is not already shareable;
+- anything under an NDA or an embargo.
+
+**Record the constraint, not the confidential fact.** "Blocked pending a contractual
+decision, see the internal tracker" carries the state a successor needs without carrying
+the secret. The fact itself belongs in the internal house (§5).
+
+Two consequences that are easy to miss. A secret that was committed is compromised even
+after a later commit removes it: rotate it, do not patch over it. And any agent that docks
+onto the folder may transmit its contents to a third-party model, so treat the repo as
+readable by anyone you would not send the files to.
+
+---
+
 ## 6. Litmus test protocol (self-verification)
 
 1. Start a fresh model as a subagent, **isolated**: this folder only, no global
@@ -217,6 +243,7 @@ reduce to "AGENTS.md + a STATE layer". RRS is scaffolding for a gap, not an end 
 - [ ] Parked items marked as deliberate, distinct from unfinished ones
 - [ ] No dangling references without explanation; reach of continuability declared
 - [ ] Confidentiality marked + technically separated where possible; markers do not conflict
+- [ ] Nothing from §5a in the repo or its history (credentials, personal data, NDA content)
 - [ ] Self-references repo-relative (survive copy/move)
 - [ ] STATE describes the actual folder contents (no over-claim from an external log)
 - [ ] No competing status blocks outside STATE.md

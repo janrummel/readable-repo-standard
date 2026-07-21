@@ -13,6 +13,33 @@ No deadline; tester feedback from the published repo may reprioritize this.
 - Watch for issues/feedback on the published repo (tester CTA in README).
 
 ## Done
+- Honesty pass on the claim surfaces (2026-07-21, second remediation block from the
+  expert-role review):
+  - "empirically validated" replaced with "tested rather than proven" in `README.md` and
+    `STANDARD.md`, each with n, scope, and what the experiment actually manipulates
+    (whether state is recorded at all, not whether this file layout is the best one).
+  - The real limits now sit on the public surfaces, not only in `experiment/`: a "What this
+    does not show" paragraph in the README, and the landing page's boundary chips replaced
+    (n=5, one synthetic project, no unstructured-notes control, author-graded and unblinded,
+    confidence self-reported).
+  - Disclosed that the `constraint_found` metric was read more strictly than its
+    pre-registered wording: 2/5 bare literally, 0/5 tightened. Both are now printed in
+    `RESULTS-v2.md` and in the honesty log, and the "cannot be tuned after the fact"
+    sentence in `experiment/README.md` was corrected.
+  - Honesty log extended: the cross-harness runs were not pre-registered, grading was
+    unblinded and single-rater, verbatim transcripts exist only for the four Codex runs,
+    there is no third arm, and the git history begins after the runs. "raw runs" narrowed
+    to "the graded runs" wherever all ten were implied.
+  - `STANDARD.md` gained §5a "What must never enter the repo" (credentials, personal data,
+    NDA content, customer and pricing detail), with the rule "record the constraint, not
+    the confidential fact", a note that committed secrets must be rotated rather than
+    patched, and the warning that a docking agent may transmit the folder to a third-party
+    model. Mirrored into the START_HERE template and the conformance checklist.
+  - `STATE.md` itself cleaned: launch and reach tactics removed (they do not belong in the
+    file the standard tells every reader to open first), and the naming decision reworded
+    so it no longer records a third-party mark.
+  - The `experiment/README.md` reproduce step pointed at a prompt that is not in the
+    preregistration; it now points at `v2/cross-harness/PROMPT.txt`, the only recorded one.
 - Adversarial expert-role review of the public surfaces (2026-07-21, four lenses:
   experiment methodologist, standards editor, skeptical adopter + security, technical
   editor). First remediation block applied, all six verifiable errors:
@@ -32,8 +59,8 @@ No deadline; tester feedback from the published repo may reprioritize this.
     `example/tidymark` after the cross-harness run found it.
   - The diagram's cycle label used an em-dash; removed, images re-rendered, alt text now
     also names the four files it shows.
-  Known and NOT yet addressed, see Parked: the claim wording ("empirically validated"),
-  the missing limits on the public surfaces, and the trap-priming sentence in Arm B.
+  The wording and disclosure findings from the same review were closed in the honesty pass
+  above; what is left is in Parked, headed by the trap-priming sentence in Arm B.
 - Docking diagram added to the two public surfaces (2026-07-21): README shows it directly
   under the pitch (before "The idea in one screen"), the landing page shows it in the hero
   under the byline. It is the visual form of the core claim (the pen is interchangeable,
@@ -48,8 +75,7 @@ No deadline; tester feedback from the published repo may reprioritize this.
   README scoreboard + status section, STANDARD.md status line, experiment/README
   (new replication section, limitation closed), landing page (meta descriptions,
   5-dot scoreboard, confidence meter 88, integrity chip). Combined figures: bare 0/5
-  vs RRS 5/5, confidence medians 88 vs 98. A LinkedIn follow-up comment under the
-  launch post was drafted for the owner to publish by hand.
+  vs RRS 5/5, confidence medians 88 vs 98.
 - **Cross-harness replication (2026-07-19): bare 0/2 vs RRS 2/2 with GPT-5.4 via the
   OpenAI Codex app** (fresh session per run, read-only, executed by the owner by hand;
   disposable arm copies with neutral names, ground truth kept outside the folder tree).
@@ -77,71 +103,65 @@ No deadline; tester feedback from the published repo may reprioritize this.
   the four files are the concrete first step). Standard text (STANDARD.md) kept precise.
 - Published: public repo at github.com/janrummel/readable-repo-standard, GitHub Pages live
   at janrummel.github.io/readable-repo-standard (served from `main` /docs).
-- Presence pass (github-presence / website-review, target Framework Gold): README voice
-  neutralized (public repos use a neutral voice; the LinkedIn post stays first-person on
-  purpose), added `LICENSE` (MIT), a Quick Start with `git clone`, a "How this repo is
-  organized" + core-vs-companion section, OG/meta tags in `docs/`, and removed em-dashes.
-  FAQ / Contributing / landing-design criteria deliberately deferred (premature; landing
-  design is intentionally untouched).
+- Public presence pass: neutral README voice, `LICENSE` (MIT), a Quick Start with
+  `git clone`, a "How this repo is organized" + core-vs-companion section, link-preview
+  metadata in `docs/`, and em-dashes removed. FAQ and Contributing deliberately deferred
+  as premature; the landing design is intentionally untouched.
 - Expert-role audit (4 lenses: maintainer, technical writer, skeptical adopter, launch
   strategist) run against the live state; Tier-1 remediation applied:
-  - Discoverability: repo homepage set to the Pages URL, 10 topics added, README nav line
-    linking Landing/Standard/Templates/Experiment, landing page now links back to the repo.
+  - Discoverability: repo homepage points at the Pages URL, README nav line linking
+    Landing/Standard/Templates/Experiment, landing page links back to the repo.
   - Link previews: 1200x630 `docs/og-image.png` + og:image / twitter summary_large_image.
   - Self-consistency (the standard was violating its own rules): §3 STATE sections clarified
     (canonical menu + which are required), START_HERE mandatory sections (confidentiality +
     reach) added to this repo's and tidymark's START_HERE, tidymark MANIFEST gained the §8
     code-repo block, four-vs-five file count reconciled + `.template` rename note, and the
     orphan 45/65 figures in STANDARD replaced with the experiment's own numbers.
-  - Launch: LinkedIn post reworked (hook front-loaded, link moved to the first comment, CTA
-    tightened). Deferred to Tier 2/3: version tag + CHANGELOG, interop with existing
-    AGENTS.md/CLAUDE.md, committing raw transcripts, and the Arm-C (unstructured NOTES.md)
-    control that would close the "true by construction" critique.
+  - Deferred at the time, now tracked under Parked: version tag + CHANGELOG, interop with
+    an existing AGENTS.md/CLAUDE.md, committing raw transcripts, and the Arm-C
+    (unstructured NOTES.md) control that would close the "true by construction" critique.
 
 ## Parked (do NOT pick this up as "next")
-Open findings from the 2026-07-21 expert-role review. Parked, not dismissed: each one is
-a decision waiting to be made, and the honest ones cost credibility every day they stay.
+Open findings from the 2026-07-21 expert-role review. Parked, not dismissed. The wording
+and disclosure findings were fixed the same day (see Done); what is left needs either a
+run or a decision, and each one has a trigger rather than a date.
 
-- **Claim wording.** "empirically validated" (`README.md`, `STANDARD.md`) overstates n=5 on
-  one synthetic project with one trap, graded unblinded by the author. Target wording:
-  "tested rather than proven".
-- **Limits belong on the public surfaces.** The real bounds (one synthetic project, small n,
-  self-reported confidence, no Arm C, author-graded) live in `experiment/README.md`; the
-  landing page's "Honest boundaries" chips list wins instead.
 - **Arm B carries a trap-priming sentence.** `experiment/v2/arm-b-rrs/START_HERE.md` warns
-  that parked code can look finished. It is not in `templates/` and not in v1, and it speaks
-  to the graded "trap avoided" metric. Disclose it in the honesty log; remove it and re-run
-  Arm B before the metric is quoted again.
-- **The constraint metric was tightened after the fact.** The pre-registered wording was
-  "names stdlib-only"; both bare Codex runs wrote "dependency-free" in their first sentence.
-  Under the literal rule that metric is 2/5, not 0/5. Report both readings.
-- **"Raw runs" is promised for all ten runs; only the four Codex runs have transcripts.**
-  Either commit the six Claude transcripts or narrow the wording.
-- **No Arm C** (unstructured `NOTES.md` carrying the same facts). Without it the experiment
-  supports "write the state down" more strongly than it supports this specific file layout.
-- **What must never enter the repo.** The standard tells people to write decisions into git
-  and never says what must stay out (credentials, personal data, NDA content, customer and
-  pricing detail). Git history survives deletion, forking and mirroring, and any docking
-  agent may ship the folder to a third-party model. Needs its own section.
+  that parked code can look finished. It is not in `templates/` and not in v1, and it
+  speaks to the graded "trap avoided" metric, so part of Arm B's 5/5 may come from a
+  hand-written hint rather than from the structure. **This is the one open item that can
+  change the numbers.** Fix: remove the sentence, pre-register the expectation, re-run Arm
+  B, report whatever comes out. Trigger: before the trap metric is quoted anywhere new.
+- **No Arm C** (unstructured `NOTES.md` carrying the same facts). Now disclosed everywhere,
+  but disclosure is not a control. Until it is run, the evidence supports "write the state
+  down" more strongly than it supports this specific set of files. Trigger: together with
+  the Arm B re-run, or when someone asks for it.
+- **The six Claude runs have no verbatim transcripts.** The wording no longer claims
+  otherwise. Committing them (sanitized) would still be strictly better. Trigger: any
+  dispute about a graded row.
 - **Conformance is defined three ways** (an iff over five questions in §0, the appendix
   checklist, one question in the README) and there is no MUST/SHOULD/MAY vocabulary, so no
-  statement in the document is objectively binding.
-- **Quick start overwrites an existing `AGENTS.md`.** Needs a merge rule, not a copy rule.
+  statement in the document is objectively binding. Trigger: the first time someone asks
+  "is my repo conformant?".
+- **Quick start overwrites an existing `AGENTS.md`.** Needs a merge rule, not a copy rule;
+  same for `CLAUDE.md` and similar files. Trigger: the first report of a collision.
 - **This repo has never run its own litmus test** (§6 requires a result in `tests/`), while
-  the README calls it "its own first example".
-- **Absolutes** ("any blank AI model", "no memory to lose", "just knows what to do next")
-  are falsifiable by one counterexample and contradict `companion/README.md`'s own
-  "one real failure mode: discipline".
-- **Version tag, CHANGELOG, and what v0.x means**; plus a licence split (spec text vs code)
-  and a trademark notice for the model names used in the diagram.
+  the README calls it "its own first example". Trigger: the next substantive change to
+  `STANDARD.md`.
+- **Absolutes in the pitch** ("any blank AI model", "no memory to lose", "just knows what to
+  do next") are falsifiable by one counterexample and contradict `companion/README.md`'s own
+  "one real failure mode: discipline". Trigger: the next pass over the pitch text.
+- **Standard machinery deliberately not built yet:** conformance linter and a CI snippet,
+  version tag, CHANGELOG, a definition of what v0.x means and what v1.0 requires, a licence
+  split (spec text vs code) and a trademark notice for the model names in the diagram.
+  Reason: none of it has a user yet. Trigger: a second repo, not this one, adopting RRS.
 
 ## Decisions (with why)
-- **Named "Readable Repo Standard", not the working codename.** Why: the original
-  metaphor used a registered toy trademark; a public project should not carry a brand
-  name. The metaphor stays in prose as descriptive use; the project name describes the
-  benefit.
+- **Named for what it does, not for a metaphor.** Why: a public project should not lean
+  on a brand name, and the project name should describe the benefit (a repo a cold agent
+  can read). The working codename stayed private.
 - **Standard written in English.** Why: a public standard reaches more testers in
-  English; the LinkedIn write-up can be in the author's language.
+  English; write-ups elsewhere can be in the author's language.
 - **The example is synthetic (`tidymark`).** Why: it doubles as the public worked example
   and the A/B substrate, with zero confidentiality exposure.
 

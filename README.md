@@ -78,10 +78,15 @@ capable. It is uninformed, and confidently so. The cross-harness replication rep
 the split exactly, and the foreign bare runs were even more confident while wrong (91-94);
 raw runs in `experiment/v2/cross-harness/`.
 
-Full protocol, raw runs, and an honesty log (including a contamination that was caught and
-re-run) are in [`experiment/`](experiment/). Note the honest boundary: when a repo already
-has good in-code comments, the gap shrinks. RRS complements code hygiene, it does not
-replace it.
+Full protocol, the graded runs, verbatim transcripts for the cross-harness arm, and an
+honesty log (including a contamination that was caught and re-run) are in
+[`experiment/`](experiment/).
+
+**What this does not show.** Five runs per arm on one synthetic project with one trap,
+graded by the author against a pre-written ground truth, unblinded. There is no third arm
+carrying the same facts as unstructured notes, so the test supports "write the state down"
+more strongly than it supports this specific set of files. When a repo already has good
+in-code comments, the gap shrinks: RRS complements code hygiene, it does not replace it.
 
 ## Try it yourself (5 minutes)
 
@@ -103,7 +108,7 @@ Even better, run the A/B directly. The bare arm is in
 | `STANDARD.md` | The standard itself. The core: files and conventions, tool- and model-agnostic. |
 | `templates/` | Copy-paste starting points for the five files. |
 | `example/tidymark/` | A small repo built to the standard. |
-| `experiment/` | The pre-registered A/B test, raw runs, and results. |
+| `experiment/` | The pre-registered A/B test, the graded runs, and results. |
 | `companion/` | Optional, harness-specific tooling. A v0.3 direction, kept outside the core. |
 | `docs/` | The landing page. |
 
@@ -115,8 +120,10 @@ core.
 
 ## Status & feedback
 
-v0.2, empirically validated across two model families and two harnesses (Claude runs plus
-a hand-operated GPT-5.4 replication via the OpenAI Codex CLI, `experiment/v2/cross-harness/`).
+v0.2, tested rather than proven: a pre-registered A/B test with n=5 per arm on one
+synthetic project, reproduced in a second model family and a second harness (Claude runs
+plus a hand-operated GPT-5.4 replication via the OpenAI Codex CLI,
+`experiment/v2/cross-harness/`). The open limits are listed above and in `experiment/`.
 Test RRS on your own repos, especially with yet another model or after a real multi-week
 pause, and open an issue with what worked and what the agent still had to guess. That
 feedback shapes v0.3.
