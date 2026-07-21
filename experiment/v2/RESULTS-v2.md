@@ -78,10 +78,17 @@ operated by hand). Setup, prompt, and unedited raw runs: `cross-harness/`.
 | CA-1 | finish `fix_headings` TODO + add tests | NO (walked in) | no | 4 | 94 |
 | CA-2 | finish `fix_headings` fenced-code TODO + tests | NO (walked in) | no | 4 | 91 |
 
-Grading note on "stdlib named": both bare runs DESCRIBED the tool as "dependency-free"
-in passing, but neither listed it as a constraint to respect; CA-1 explicitly wrote that
-any constraint beyond the observed ones "would be a guess". Scored as no, consistent
-with the metric (names stdlib-only as a contributor constraint).
+Grading note on "stdlib named", and it is a post-hoc tightening, so read it carefully:
+both bare runs DESCRIBED the tool as "dependency-free" in their opening sentence, but
+neither listed it as a constraint to respect; CA-1 explicitly wrote that any constraint
+beyond the observed ones "would be a guess". They were scored NO on the stricter reading
+"names stdlib-only *as a constraint*". The pre-registered wording is only "names
+stdlib-only", and under that literal rule both runs would score YES.
+
+**So this metric is 2/5 bare under the pre-registered wording and 0/5 under the tightened
+one.** The scoreboard below prints the tightened number; the literal one is stated here so
+the choice is visible. The other two metrics are unaffected: no bare run named the correct
+next action or avoided the trap under any reading.
 
 ### Arm B (RRS) - Codex
 

@@ -3,8 +3,10 @@
 A pre-registered A/B test. One synthetic project (`tidymark`) in two arms that differ
 ONLY in the presence of the RRS files. Blank, read-only AI agents are dropped into each
 arm cold and asked for the single correct next action plus any binding constraints. The
-ground truth and grading were written down BEFORE any agent ran (see the
-`PREREGISTRATION` files), so the numbers cannot be tuned after the fact.
+ground truth and the metrics were written down BEFORE any agent ran (see the
+`PREREGISTRATION` files). One metric was read more strictly than its pre-registered
+wording once the runs were in; that call and its effect on the score are disclosed in the
+honesty log below.
 
 ## Two variants
 
@@ -44,9 +46,32 @@ in the treatment files (both fixed in `../example/tidymark`, frozen arm copies u
   (The wandering itself is a signal: bare agents cast a wider net for missing context.)
 - Former limitation, closed 2026-07-19: the original runs all used the same model
   family. The cross-harness replication (GPT-5.4 / Codex CLI, see above) reproduced the
-  split exactly. Remaining honest bounds: one synthetic project, small n per arm,
-  self-reported confidence scores.
+  split exactly.
+- **One metric was tightened after the data was seen.** The pre-registered wording is
+  "constraint_found: names stdlib-only". Both bare Codex runs called the tool
+  "dependency-free" in their opening sentence but never listed it as a constraint to
+  respect. They were graded NO, on the stricter reading "names it as a constraint".
+  Under the literal pre-registered wording that metric would be **2/5 bare, not 0/5**.
+  Both readings are reported here; the other two metrics are unaffected.
+- **The cross-harness runs were not pre-registered.** They were an unplanned extension,
+  graded against the existing v2 ground truth. Pre-registered: the v1 and v2 Claude runs,
+  3 per arm.
+- **Grading was done by the author, unblinded, with no second rater.** Arm identity is
+  visible in any transcript, so blinding was not possible without rewriting the runs; the
+  point above shows that the remaining discretion was real.
+- **Verbatim transcripts exist only for the four cross-harness runs**
+  (`v2/cross-harness/`). The six Claude runs are recorded as graded rows written by the
+  operator, not as raw output.
+- **No third arm.** There is no control that carries the same facts as unstructured notes
+  (a `NOTES.md`), so the comparison is "state recorded in the repo" vs "state nowhere".
+  Until that arm exists, the evidence supports "write the state down" more strongly than
+  it supports this specific set of files.
+- **This repo's git history begins after all runs**, so the pre-registration is
+  documented, not independently timestamped.
+- Remaining honest bounds: one synthetic project, one trap design, small n per arm, and
+  self-reported confidence scores, which are not calibrated and not comparable between
+  products.
 
 ## Reproduce it
-Point a fresh agent at `v2/arm-a-bare` and then at `v2/arm-b-rrs` with the prompt from
-the `PREREGISTRATION-v2` file. Same code, opposite outcomes.
+Point a fresh agent at `v2/arm-a-bare` and then at `v2/arm-b-rrs` with the prompt in
+`v2/cross-harness/PROMPT.txt`. Same code, opposite outcomes.

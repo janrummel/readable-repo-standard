@@ -14,6 +14,8 @@
 
 ## Confidentiality
 <What must not leave this repo / what is internal. If all public: say so.>
+<Nothing from STANDARD.md §5a goes in here or into the history: no credentials, no
+personal data, no NDA content. Record the constraint, not the confidential fact.>
 
 ## Reach of continuability
 <Which threads are fully continuable from here, and which need another house.>

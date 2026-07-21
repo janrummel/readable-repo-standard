@@ -17,7 +17,11 @@ read the folder, understand it, and continue from the last state without guessin
 - `AGENTS.md` — the bridge for docking agents.
 - `templates/` — copy-paste starting points for the four files + the bridge.
 - `example/tidymark` — a small worked example built to the standard.
-- `experiment/` — the pre-registered A/B test, raw runs, and results (v1 and v2).
+- `experiment/` — the pre-registered A/B test, the graded runs, and results (v1 and v2).
+- `companion/` — optional, harness-specific tooling. A v0.3 direction, outside the core.
+- `docs/` — the landing page (GitHub Pages).
+- `assets/` — the docking diagram and link-preview sources, plus `render.sh`.
+- `LICENSE` — MIT.
 
 ## Confidentiality
 Everything in this repo is public and synthetic. No confidential content, no real
