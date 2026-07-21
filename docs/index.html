@@ -155,6 +155,32 @@
     border-left: 3px solid var(--lost); padding: 4px 0 4px 20px; margin: 24px 0 0; max-width: 58ch;
   }
 
+  /* ---- evidence chart ---- */
+  /* Duplicated in assets/evidence-chart.html, the render source. Change both together. */
+  .evidence {
+    margin: 26px 0 0; background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 22px 24px 18px; box-shadow: var(--shadow);
+  }
+  .ev-title { font-family: var(--mono); font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; margin-bottom: 4px; }
+  .ev-sub { font-size: .92rem; color: var(--ink-soft); margin-bottom: 20px; max-width: none; }
+  .ev-row {
+    display: grid; grid-template-columns: 15.5rem 1fr auto; gap: 18px; align-items: center;
+    padding: 11px 0; border-top: 1px solid var(--line);
+  }
+  .ev-lbl { font-size: .95rem; line-height: 1.25; }
+  .ev-lbl b { font-weight: 650; }
+  .ev-lbl span { display: block; font-family: var(--mono); font-size: .72rem; color: var(--ink-faint); margin-top: 3px; }
+  .ev-dots { display: flex; gap: 7px; }
+  .ev-dots i { width: 14px; height: 14px; border-radius: 50%; flex: none; display: block; }
+  .ev-dots i.hit { background: var(--accent); }
+  .ev-dots i.miss { border: 1.5px solid var(--lost); position: relative; }
+  .ev-dots i.miss::after { content: ""; position: absolute; inset: 2.5px; border-radius: 50%; background: var(--lost); opacity: .28; }
+  .ev-score { font-family: var(--mono); font-weight: 700; font-size: 1.05rem; font-variant-numeric: tabular-nums; color: var(--accent); white-space: nowrap; }
+  .ev-score.zero { color: var(--lost); }
+  .ev-foot { margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: .82rem; color: var(--ink-soft); line-height: 1.5; }
+  .ev-foot b { color: var(--ink); font-weight: 650; }
+  @media (max-width: 560px) { .ev-row { grid-template-columns: 1fr auto; } .ev-dots { display: none; } }
+
   /* ---- honesty chips ---- */
   .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
   .chip {
@@ -360,7 +386,38 @@
     <h2>What this does not claim</h2>
     <p class="sub">The result is real, and it is bounded. The point of a pre-registered test is to report
       the limits as loudly as the wins.</p>
-    <div class="chips">
+    <figure class="evidence">
+      <div class="ev-title">What carries the effect</div>
+      <div class="ev-sub">Correct next action on a cold start. Same code and the same three facts in every
+        arm. Only the way the working state is recorded changes.</div>
+
+      <div class="ev-row">
+        <div class="ev-lbl"><b>Nothing written down</b><span>bare repo · n=5</span></div>
+        <div class="ev-dots"><i class="miss"></i><i class="miss"></i><i class="miss"></i><i class="miss"></i><i class="miss"></i></div>
+        <div class="ev-score zero">0 / 5</div>
+      </div>
+
+      <div class="ev-row">
+        <div class="ev-lbl"><b>One unstructured note</b><span>a plain NOTES.md · n=3</span></div>
+        <div class="ev-dots"><i class="hit"></i><i class="hit"></i><i class="hit"></i></div>
+        <div class="ev-score">3 / 3</div>
+      </div>
+
+      <div class="ev-row">
+        <div class="ev-lbl"><b>Four files, structured</b><span>the standard · n=3</span></div>
+        <div class="ev-dots"><i class="hit"></i><i class="hit"></i><i class="hit"></i></div>
+        <div class="ev-score">3 / 3</div>
+      </div>
+
+      <div class="ev-foot">
+        The jump is between <b>nothing written down</b> and <b>something written down</b>. Between a plain
+        note and the structured files, this test measured no difference. It ran on a 120-line project with
+        a 30-line note, which is where structure has the least to win. Whether it pays off at real size,
+        over months, with several authors, is untested.
+      </div>
+    </figure>
+
+    <div class="chips" style="margin-top:26px">
       <span class="chip">a plain notes file scored the same: 3/3</span>
       <span class="chip">n = 5 per arm, one synthetic project</span>
       <span class="chip">earlier runs graded by the author, unblinded</span>

@@ -36,6 +36,17 @@ for theme in light dark; do
   echo "rendered assets/docking-diagram-${theme}.png"
 done
 
+# Evidence chart: what carries the effect. Same 2x treatment as the diagram.
+for theme in light dark; do
+  "$CHROME" --headless --disable-gpu --hide-scrollbars \
+    --force-device-scale-factor=2 \
+    --window-size=780,424 \
+    --virtual-time-budget=2000 \
+    --screenshot="$DIR/evidence-chart-${theme}.png" \
+    "file://$DIR/evidence-chart.html?theme=${theme}" >/dev/null 2>&1
+  echo "rendered assets/evidence-chart-${theme}.png"
+done
+
 # Link preview: exactly 1200x630, so no device-scale factor here.
 "$CHROME" --headless --disable-gpu --hide-scrollbars \
   --force-device-scale-factor=1 \
