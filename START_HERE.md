@@ -17,10 +17,13 @@ read the folder, understand it, and continue from the last state without guessin
 - `AGENTS.md` — the bridge for docking agents.
 - `templates/` — copy-paste starting points for the four files + the bridge.
 - `example/tidymark` — a small worked example built to the standard.
-- `experiment/` — the pre-registered A/B test, the graded runs, and results (v1 and v2).
+- `experiment/` — the pre-registered A/B test, the graded runs, and results (v1 to v3).
 - `companion/` — optional, harness-specific tooling. A v0.3 direction, outside the core.
-- `docs/` — the landing page (GitHub Pages).
-- `assets/` — the docking diagram and link-preview sources, plus `render.sh`.
+- `docs/overview.md` — **the map of this repo**: the parts, which way they depend on
+  each other, and the three places where the obvious move is the wrong one.
+- `docs/index.html` — the landing page (GitHub Pages).
+- `assets/` — the image sources (docking diagram, evidence chart, overview map, link
+  preview) plus `render.sh`, which renders them. Never edit the PNGs by hand.
 - `LICENSE` — MIT.
 
 ## Confidentiality

@@ -120,6 +120,15 @@ Even better, run the A/B directly. The bare arm is in
 
 ## How this repo is organized
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/overview-map-dark.png">
+  <img src="assets/overview-map-light.png" width="940"
+       alt="A map of how this repository is put together, in four bands. Top band, the entry path: a blank model or a new person reads AGENTS.md, then START_HERE.md, then STATE.md, which is the only place that states the working status. Middle band, three columns. The rules: STANDARD.md, from which the templates are derived. The proof: the experiment folder with variants one, two and three, holding pre-registrations, results and raw runs, whose arms are frozen as evidence and must not be corrected. The shop window: README.md and the landing page, fed with images by the assets folder and its render script. Below the columns, one filled-in instance, the tidymark example, derived from the rules and copied in frozen form into the experiment as its substrate. The experiment supplies the numbers to the shop window. Bottom band, the self-reference: this repo applies the rules to itself, the same five files sit at its root as its memory rather than as an example, which loops back to the entry path.">
+</picture>
+
+The long version, including the three places where the obvious move is the wrong one, is in
+[`docs/overview.md`](docs/overview.md).
+
 | Path | What it is |
 |---|---|
 | `STANDARD.md` | The standard itself. The core: files and conventions, tool- and model-agnostic. |
