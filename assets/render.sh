@@ -47,6 +47,17 @@ for theme in light dark; do
   echo "rendered assets/evidence-chart-${theme}.png"
 done
 
+# Overview map: the architecture, deliberately free of any figures.
+for theme in light dark; do
+  "$CHROME" --headless --disable-gpu --hide-scrollbars \
+    --force-device-scale-factor=2 \
+    --window-size=940,640 \
+    --virtual-time-budget=2000 \
+    --screenshot="$DIR/overview-map-${theme}.png" \
+    "file://$DIR/overview-map.html?theme=${theme}" >/dev/null 2>&1
+  echo "rendered assets/overview-map-${theme}.png"
+done
+
 # Link preview: exactly 1200x630, so no device-scale factor here.
 "$CHROME" --headless --disable-gpu --hide-scrollbars \
   --force-device-scale-factor=1 \
