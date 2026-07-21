@@ -82,11 +82,28 @@ Full protocol, the graded runs, verbatim transcripts for the cross-harness arm, 
 honesty log (including a contamination that was caught and re-run) are in
 [`experiment/`](experiment/).
 
-**What this does not show.** Five runs per arm on one synthetic project with one trap,
-graded by the author against a pre-written ground truth, unblinded. There is no third arm
-carrying the same facts as unstructured notes, so the test supports "write the state down"
-more strongly than it supports this specific set of files. When a repo already has good
-in-code comments, the gap shrinks: RRS complements code hygiene, it does not replace it.
+**The follow-up test, and it narrows the claim.** A third variant
+([`experiment/v3/`](experiment/v3/)) put the four files against a control nobody had run
+yet: the same code, the same three facts, written as one unstructured `NOTES.md`. It scored
+the same, 3/3 against 3/3, with confidence within two points. The same variant removed a
+hand-written hint from the treatment arm that a reviewer had flagged as doing part of the
+work; without it the arm still scored 3/3, so the earlier result stands on the files, not
+on the hint. Predictions and grading rules were committed before the runs, and grading was
+blind to the arm.
+
+What follows from that: **recording the state where the next reader will find it is what
+produces the effect.** Bare repos fail cold. Repos that record it succeed, whether the state
+sits in four named files or in one honest running note. This experiment does not show that
+the RRS layout beats a plain notes file, and saying otherwise would overstate it.
+
+Where the structure is meant to earn its keep is what this test cannot reach: a project
+that is not 120 lines, a note that has grown for a year, several sessions, several authors,
+and the moment two of those notes have to be merged. That is the bet RRS makes. It is a
+bet, not a result.
+
+**Other limits.** Five runs per arm on one synthetic project with one trap; the earlier runs
+were graded by the author, unblinded. When a repo already has good in-code comments, the gap
+shrinks: RRS complements code hygiene, it does not replace it.
 
 ## Try it yourself (5 minutes)
 

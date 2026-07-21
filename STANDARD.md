@@ -11,9 +11,12 @@ Status: v0.2. Tested, not proven. A pre-registered A/B experiment (see `experime
 one synthetic project: bare repos scored 0/5 on the correct next action while RRS repos
 scored 5/5, with self-reported agent confidence of 88 vs 98 (medians, n=5 per arm across
 two model families: Claude and GPT-5.4 via the OpenAI Codex CLI). Note what that
-experiment manipulates: whether the state is recorded in the repo at all. It does not yet
-show that this particular file layout beats an unstructured note, and it has no such
-control arm. See `experiment/` for the protocol, the graded runs, and the honest limits.
+experiment manipulates: whether the state is recorded in the repo at all. A third variant
+added the missing control, the same facts as one unstructured `NOTES.md`, and it scored the
+same as the four files (3/3 vs 3/3). So the measured effect belongs to *recording the
+state*, not to this layout. The layout is a bet on what happens at more scale, more
+sessions, and more authors, which the experiment does not reach. See `experiment/` for the
+protocol, the graded runs, and the honest limits.
 
 ---
 

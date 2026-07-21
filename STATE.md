@@ -13,6 +13,27 @@ No deadline; tester feedback from the published repo may reprioritize this.
 - Watch for issues/feedback on the published repo (tester CTA in README).
 
 ## Done
+- **v3 run (2026-07-21): the layout is not what carries the effect, and the hint was not
+  load-bearing.** Preregistration committed first (`14ec558`), so this is the first
+  prediction in this project timestamped by the repository itself. Two arms on identical
+  code, three runs each, blind grading by a separate agent:
+  - **B′** (RRS with the trap-priming sentence removed from `START_HERE.md`): **3/3/3**.
+    The v2 result therefore stands on the files, not on the hand-written hint. Prediction
+    confirmed as written.
+  - **C** (bare plus one unstructured `NOTES.md` carrying the same three facts): **3/3/3**,
+    confidence within two points of B′. This was the pre-registered "C matches B′" case and
+    the consequence was fixed in advance: **the claim narrows.** What the experiment
+    supports is *recording the state where the next reader will find it*. It does not
+    support "these four files beat a plain note", at least not at this scale.
+  - Public surfaces updated accordingly: README (a new paragraph that states the narrowing
+    in plain words), landing page (leading boundary chip is now the finding itself),
+    `STANDARD.md` status, `experiment/README.md` (v3 section, honesty log reconciled).
+    The bare-vs-RRS scoreboard stays; only the implication that the layout did it is gone.
+  - Where structure is still expected to pay off is what this test cannot reach: scale,
+    a note grown over a year, several sessions, several authors, and merging two notes.
+    That is now stated as a bet rather than as a result.
+  - All six transcripts committed verbatim in `experiment/v3/runs/`. No run wandered
+    outside its folder.
 - Honesty pass on the claim surfaces (2026-07-21, second remediation block from the
   expert-role review):
   - "empirically validated" replaced with "tested rather than proven" in `README.md` and
@@ -60,7 +81,7 @@ No deadline; tester feedback from the published repo may reprioritize this.
   - The diagram's cycle label used an em-dash; removed, images re-rendered, alt text now
     also names the four files it shows.
   The wording and disclosure findings from the same review were closed in the honesty pass
-  above; what is left is in Parked, headed by the trap-priming sentence in Arm B.
+  above, and the two findings about the evidence itself were answered by the v3 run.
 - Docking diagram added to the two public surfaces (2026-07-21): README shows it directly
   under the pitch (before "The idea in one screen"), the landing page shows it in the hero
   under the byline. It is the visual form of the core claim (the pen is interchangeable,
@@ -126,16 +147,13 @@ Open findings from the 2026-07-21 expert-role review. Parked, not dismissed. The
 and disclosure findings were fixed the same day (see Done); what is left needs either a
 run or a decision, and each one has a trigger rather than a date.
 
-- **Arm B carries a trap-priming sentence.** `experiment/v2/arm-b-rrs/START_HERE.md` warns
-  that parked code can look finished. It is not in `templates/` and not in v1, and it
-  speaks to the graded "trap avoided" metric, so part of Arm B's 5/5 may come from a
-  hand-written hint rather than from the structure. **This is the one open item that can
-  change the numbers.** Fix: remove the sentence, pre-register the expectation, re-run Arm
-  B, report whatever comes out. Trigger: before the trap metric is quoted anywhere new.
-- **No Arm C** (unstructured `NOTES.md` carrying the same facts). Now disclosed everywhere,
-  but disclosure is not a control. Until it is run, the evidence supports "write the state
-  down" more strongly than it supports this specific set of files. Trigger: together with
-  the Arm B re-run, or when someone asks for it.
+- **The frozen v2 treatment arm still contains the priming sentence.** It stays as run
+  evidence, like the other deliberately untouched arm copies. v3 showed it was not
+  load-bearing, so this is bookkeeping, not a correction. Trigger: none, do not "fix" it.
+- **Does the layout beat a plain note at scale?** v3 answered the question at 120 lines and
+  a 30-line note: it does not. The interesting version of the question needs a bigger
+  project, a note grown over months, several authors, or a merge. That is the bet RRS
+  makes and it is currently untested. Trigger: a real repo, not a synthetic one.
 - **The six Claude runs have no verbatim transcripts.** The wording no longer claims
   otherwise. Committing them (sanitized) would still be strictly better. Trigger: any
   dispute about a graded row.
