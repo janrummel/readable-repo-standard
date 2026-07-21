@@ -13,6 +13,16 @@ No deadline; tester feedback from the published repo may reprioritize this.
 - Watch for issues/feedback on the published repo (tester CTA in README).
 
 ## Done
+- Pitch corrected to what the repo actually contains (2026-07-21): the README and the landing
+  lede claimed the repo carries "the orchestration" and "the brain". It does not. There are no
+  skills, no hooks, no routing and no runtime here; `companion/` is where harness-specific
+  tooling would go and it is still empty by design. The pitch now says what is true and is
+  sharper for it: the repo carries the part a project cannot outsource, its state, its
+  decisions and its vocabulary, plus the one instruction that says where to start. The
+  absolutes went with it ("any blank AI model", "just knows what to do next", "no memory to
+  lose"), in the README, the lede and both meta descriptions. The h1 and the link-preview image
+  keep the short form "put the agent harness in the repo" as a headline; the lede qualifies it
+  in the next sentence.
 - **v3 run (2026-07-21): the layout is not what carries the effect, and the hint was not
   load-bearing.** Preregistration committed first (`14ec558`), so this is the first
   prediction in this project timestamped by the repository itself. Two arms on identical
