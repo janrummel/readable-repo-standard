@@ -7,7 +7,8 @@
 > Guiding image: **the repo is the book; the model is only the pen.** The knowledge
 > lives in the folder, not in the model and not in the chat. The pen is replaceable.
 
-Status: v0.2. Tested, not proven. A pre-registered A/B experiment (see `experiment/`) on
+Status: v0.2. Tested, not proven. RRS is a published convention maintained by one
+author, not a standard ratified by any body. A pre-registered A/B experiment (see `experiment/`) on
 one synthetic project: bare repos scored 0/5 on the correct next action while RRS repos
 scored 5/5, with self-reported agent confidence of 88 vs 98 (medians, n=5 per arm across
 two model families: Claude and GPT-5.4 via the OpenAI Codex CLI). Note what that
