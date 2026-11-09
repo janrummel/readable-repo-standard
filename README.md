@@ -157,6 +157,10 @@ feedback shapes v0.3.
 This repo is itself built to the standard (it has its own `START_HERE.md` and `STATE.md`).
 It is its own first example.
 
+## Publishing
+
+https://janrummel.github.io/readable-repo-standard/ is served by GitHub Pages straight from branch `main`, folder `/docs`. No build step: the files are static HTML, CSS and JavaScript.
+
 ## License
 
 MIT. See [`LICENSE`](LICENSE). Use it, fork it, adapt the standard freely.
